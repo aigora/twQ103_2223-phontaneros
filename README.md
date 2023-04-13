@@ -8,7 +8,7 @@
 
 Diego Berlanga Juárez (Berli04)
 
-Javier San Juan Hebrerp (JaviSJH)
+Javier San Juan Hebrero (JaviSJH)
 
 Alonso
 
