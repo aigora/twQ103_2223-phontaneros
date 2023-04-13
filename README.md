@@ -4,11 +4,15 @@
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.] \n
-Diego Berlanga Juárez (Berli04) \n
-Javier San Juan Hebrerp (JaviSJH) \n
-Alonso \n
-David \n
+[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+
+Diego Berlanga Juárez (Berli04)
+
+Javier San Juan Hebrerp (JaviSJH)
+
+Alonso
+
+David
 
 ## Objetivos del trabajo
 
