@@ -5,6 +5,10 @@
 ## Integrantes del equipo
 
 [Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+Diego Berlanga Juárez (Berli04)
+Javier San Juan Hebrerp (JaviSJH)
+Alonso
+David
 
 ## Objetivos del trabajo
 
