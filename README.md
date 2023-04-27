@@ -19,3 +19,6 @@ David
 ## Objetivos del trabajo
 
 [Lista de los objetivos que se persiguen con el trabajo propuesto.]
+
+Ordenar por orden de: pH, conductividad, turbidez
+Determinar si tienen: averia, coliformes
