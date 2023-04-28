@@ -12,13 +12,14 @@ Diego Berlanga Juárez (Berli04)
 
 Javier San Juan Hebrero (JaviSJH)
 
-Alonso
+Alonso García Gómez (A
 
-David
+David Fortes García (Davforgar)
 
 ## Objetivos del trabajo
 
 [Lista de los objetivos que se persiguen con el trabajo propuesto.]
 
 Ordenar por orden de: pH, conductividad, turbidez
+
 Determinar si tienen: averia, coliformes
