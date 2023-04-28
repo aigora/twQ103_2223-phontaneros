@@ -12,7 +12,7 @@ Diego Berlanga Juárez (Berli04)
 
 Javier San Juan Hebrero (JaviSJH)
 
-Alonso García Gómez (A
+Alonso García Gómez (Alonsogargom)
 
 David Fortes García (Davforgar)
 
