@@ -6,19 +6,15 @@ Programa para consultar el pH de diferentes fuentes en distintos barrios de Madr
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
-
 Diego Berlanga Juárez (Berli04)
 
 Javier San Juan Hebrero (JaviSJH)
 
-Alonso
+Alonso García Gómez (Alonsogargom)
 
-David
+David Fortes García (Davforgar)
 
 ## Objetivos del trabajo
-
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
 
 Ordenar por orden de: pH, conductividad, turbidez
 Determinar si tienen: averia, coliformes
