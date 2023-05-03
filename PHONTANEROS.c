@@ -8,7 +8,7 @@ int main () {
 	float ph;
 	int conductividad;
 	int turbidez;
-	int i;
+	int i,n;
 	
 	
 	//Seleccionar programa
