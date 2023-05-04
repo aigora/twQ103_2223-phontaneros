@@ -52,7 +52,7 @@ int main(){
 		printf("ERROR, no se puede abrir el fichero.");
 		return 0; 	
 	}
-	//i=0;	
+	i=0;	
 	printf("Datos de Lavapies:\n");
 	printf("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
 	while(fscanf(fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
