@@ -10,15 +10,14 @@ int main () {
 	int turbidez;
 	int i;
 	
-	
+	printf ("\t\t\t=========PHONTANEROS========= \n\n");
 	//Seleccionar programa
 	do {
-	printf ("\t\t\t=========PHONTANEROS========= \n\n");
 	printf ("Introduzca una opcion: \n\n");
-	printf ("1 - Buscar lista de datos \n");
+	printf ("1 - Buscar datos \n");
 	printf ("2 - Ordenar datos \n");
 	printf ("3 - Comparar datos \n");
-	printf ("4 - Salir del programa \n");
+	printf ("4 - Salir del programa \n\n");
 	scanf ("%d", &op);
 	} while (op<1 || op>4);
 	
@@ -27,18 +26,100 @@ int main () {
 		
 		//Buscar datos
 		case 1: 
+			do {
+			printf ("\nSeleccione una opcion: \n");
+			printf ("1 - Ver ficheros \n");
+			printf ("2 - Buscar una fuente \n");
+			printf ("3 - Buscar un dato \n\n");
+			scanf("%d", &op);
+			} while (op<1 || op>3);
+			
+			switch (op) {
+				
+				//Ver ficheros
+				case 1:
+					do {
+					printf ("\nSeleccione un barrio: \n");
+					printf ("1 - Lavapies \n");
+					printf ("2 - Carabanchel \n");
+					printf ("3 - Vallecas \n\n");
+					scanf ("%d", &op);
+					} while (op<1 || op>3);
+					
+					switch (op) {
+						
+						//Lavapies
+						case 1:
+							printf ("");
+						break;
+						
+						//Carabanchel
+						case 2:
+							printf ("");
+						break;
+				
+						//Vallecas
+						case 3:
+							printf ("");
+						break;
+					}
+				break;
+				
+				//Buscar una fuente
+				case 2:
+					do {
+					printf ("\nSeleccione un barrio: \n");
+					printf ("1 - Lavapies \n");
+					printf ("2 - Carabanchel \n");
+					printf ("3 - Vallecas \n\n");
+					scanf ("%d", &op);
+					} while (op<1 || op>3);
+					
+					switch (op) {
+						
+						//Buscar fuentes en Lavapies
+						case 1:
+							printf ("Introduzca el numero de la fuente: \n");
+						break;
+						
+						//Buscar fuentes en Carabanchel
+						case 2:
+							printf ("Introduzca el numero de la fuente: \n");
+						break;
+				
+						//Buscar fuentes en Vallecas
+						case 3:
+							printf ("Introduzca el numero de la fuente: \n");
+						break;
+					}
+				break;
+				
+				//Buscar un dato
+				case 3:
+					do {
+					printf ("\nSeleccione una opcion: \n");
+					printf ("1 - Lavapies \n");
+					printf ("2 - Carabanchel \n");
+					printf ("3 - Vallecas \n\n");
+					scanf ("%d", &op);
+					} while (op<1 || op>3);
+				break;
+			}
 		break;
 		
 		//Ordenar datos
 		case 2:
+				
 		break;
 		
 		//Comparar datos
 		case 3:
+				
 		break;
 		
 		//Salir programa
-		case 4: printf("\nSaliendo del programa...");
+		case 4: 
+			printf("\nSaliendo del programa...");
 		break;
 	}
 	
