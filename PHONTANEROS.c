@@ -109,7 +109,7 @@ int main () {
 		
 		//Ordenar datos
 		case 2:
-				
+			
 		break;
 		
 		//Comparar datos
@@ -126,6 +126,8 @@ int main () {
 	return 0;
 }
 
+
+//METER ESTO EN UNA FUNCION
 
 /*
 	if (ph<6.5 || ph>8) {
