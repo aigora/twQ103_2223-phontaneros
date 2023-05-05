@@ -2,13 +2,37 @@
 
 int main () {
 	
+	//Declaracion de structs
+	struct TDatosFuente {
+	char fuente[500];
+	float pH;
+	int conductividad;
+	int turbidez;
+	int coliformes;
+	};
+	
 	//Declaracion de variables
 	int op;
 	int potable;
-	float ph;
-	int conductividad;
-	int turbidez;
-	int i,n;
+	int i=0, n;
+	float pH;
+	int conductividad, turbidez, coliformes;
+	char fuente[500];
+	int opcion; 
+	struct TDatosFuente FuenteCar[500];
+	int NumFuentes;
+	
+	
+	//Abrir ficheros
+	FILE *fCarabanchel;
+	
+	fCarabanchel = fopen ("fCarabanchel.txt", "r"); 
+	
+	if (fCarabanchel == NULL) {
+		printf ("ERROR, no se puede abrir el fichero.");
+		return 0;
+	}
+	
 	
 	printf ("\t\t\t=========PHONTANEROS========= \n\n");
 	//Seleccionar programa
@@ -50,12 +74,22 @@ int main () {
 						
 						//Lavapies
 						case 1:
-							printf ("");
+							
 						break;
 						
 						//Carabanchel
 						case 2:
-							printf ("");
+							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
+							while (fscanf(fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
+								printf ("%s \t%.2f\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, pH, conductividad, turbidez, coliformes);
+		
+								//	FuenteCar[i].fuente=fuente;
+								FuenteCar[i].pH = pH;
+								FuenteCar[i].conductividad = conductividad;
+								FuenteCar[i].turbidez = turbidez;
+								FuenteCar[i].coliformes = coliformes;
+								i++;
+							}
 						break;
 				
 						//Vallecas
@@ -123,12 +157,23 @@ int main () {
 		break;
 	}
 	
+	
+	fclose(fCarabanchel);
+	NumFuentes = i; //No haría falta crear variable NumFuentes ya que es la i al acabar el bucle directamente
+	printf("\nEl numero de fuentes es %d\n", NumFuentes);
+	
+	
+	
+	
+	
+	
+	
 	return 0;
 }
 
 
 /*
-	if (ph<6.5 || ph>8) {
+	if (pH<6.5 || pH>8) {
 		printf("La fuente %d tiene mal ph\n", i);
 	} else {
 		printf("La fuente %d tiene buen ph\n", i);
@@ -146,7 +191,7 @@ int main () {
 		printf("El agua de la fuente %d no esta contaminada \n", i);
 	}
 	
-	if(coliformes==0 && turbidez<=5 && ph>=6.5 && ph<=8){
+	if(coliformes==0 && turbidez<=5 && pH>=6.5 && pH<=8){
 		printf("El agua es potable\n");
 	} else {
 		printf("El agua no es potable\n");
