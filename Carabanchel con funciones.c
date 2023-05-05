@@ -21,7 +21,7 @@ int main(){
 	
 	FILE *fCarabanchel;
 	
-	fCarabanchel = fopen("Carabanchel(sinFuente)2.txt", "r"); 
+	fCarabanchel = fopen("fCarabanchel.txt", "r"); 
 	
 	if (fCarabanchel == NULL) {
 		printf("ERROR, no se puede abrir el fichero.");
