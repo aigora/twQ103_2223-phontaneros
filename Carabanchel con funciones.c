@@ -1,6 +1,6 @@
 #include <stdio.h> 
 
-struct TDatosFuente{
+struct TDatosFuente {
 	char fuente[500];
 	float pH;
 	int conductividad;
@@ -15,7 +15,8 @@ int main(){
 	int i=0, n, opcion; 
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteLav[500];
-	int NumFuentesCar, NumFuentesLav; 
+	struct TDatosFuente FuenteVall[500];
+	int NumFuentesCar, NumFuentesLav, NumFuentesVall;
 	float maximo=0, minimo=0;
 	
 	
@@ -24,12 +25,12 @@ int main(){
 	fCarabanchel = fopen("fCarabanchel.txt", "r"); 
 	
 	if (fCarabanchel == NULL) {
-		printf("ERROR, no se puede abrir el fichero.");
+		printf ("ERROR, no se puede abrir el fichero.");
 		return 0;
 	}
 	
-	printf("Parametros\t pH\t   Conductividad Turbidez Coliformes\n");
-	while(fscanf(fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+	printf ("Parametros\t pH\t   Conductividad Turbidez Coliformes\n");
+	while (fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
 		printf("%s \t%.2f\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, pH, conductividad, turbidez, coliformes);
 		
 	//	FuenteCar[i].fuente=fuente;
@@ -40,22 +41,22 @@ int main(){
 		i++;
 	}
 	
-	fclose(fCarabanchel);
+	fclose (fCarabanchel);
 	NumFuentesCar = i; //No haría falta crear variable NumFuentes ya que es la i al acabar el bucle directamente
-	printf("\nEl numero de fuentes es %d\n", NumFuentesCar);
+	printf ("\nEl numero de fuentes es %d\n", NumFuentesCar);
 	
 	FILE *fLavapies;
 
-	fLavapies = fopen("fLavapies.txt", "r"); 
+	fLavapies = fopen ("fLavapies.txt", "r"); 
 	
 	if (fLavapies == NULL) {
-		printf("ERROR, no se puede abrir el fichero.");
+		printf ("ERROR, no se puede abrir el fichero.");
 		return 0; 	
 	}
 	i=0;	
-	printf("Datos de Lavapies:\n");
-	printf("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
-	while(fscanf(fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+	printf ("Datos de Lavapies:\n");
+	printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
+	while (fscanf (fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
 		printf("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteLav[i].fuente, pH, conductividad, turbidez, coliformes);
 		//FuenteLav[i].fuente = fuente;
 		FuenteLav[i].pH = pH;
@@ -65,9 +66,33 @@ int main(){
 		i++;
 	}	
 	
-	fclose(fLavapies);
+	fclose (fLavapies);
 	NumFuentesLav = i;
-	printf("\nEl numero de fuentes de Lavapies es %d\n", NumFuentesLav);
+	printf ("\nEl numero de fuentes de Lavapies es %d\n", NumFuentesLav);
 	
+	FILE *fVallecas;
+
+	fVallecas = fopen ("fVallecas.txt", "r"); 
+	
+	if (fVallecas == NULL) {
+		printf ("ERROR, no se puede abrir el fichero.");
+		return 0; 	
+	}
+	i=0;	
+	printf ("Datos de Vallecas:\n");
+	printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
+	while (fscanf (fVallecas, "%s %f %d %d %d", FuenteVall[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+		printf("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVall[i].fuente, pH, conductividad, turbidez, coliformes);
+		//FuenteLav[i].fuente = fuente;
+		FuenteVall[i].pH = pH;
+		FuenteVall[i].conductividad = conductividad;
+		FuenteVall[i].turbidez = turbidez;
+		FuenteVall[i].coliformes = coliformes;
+		i++;
+	}	
+	
+	fclose (fVallecas);
+	NumFuentesVall = i;
+	printf ("\nEl numero de fuentes de Vallecas es %d\n", NumFuentesVall);
 }
 
