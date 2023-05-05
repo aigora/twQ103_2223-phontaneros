@@ -33,6 +33,14 @@ int main () {
 		return 0;
 	}
 	
+	FILE *fLavapies;
+
+	fLavapies = fopen ("fLavapies.txt", "r"); 
+	
+	if (fLavapies == NULL) {
+		printf ("ERROR, no se puede abrir el fichero.");
+		return 0; 	
+	}
 	
 	printf ("\t\t\t=========PHONTANEROS========= \n\n");
 	//Seleccionar programa
@@ -157,16 +165,11 @@ int main () {
 		break;
 	}
 	
+	fclose (fCarabanchel); //No haría falta crear variable NumFuentes ya que es la i al acabar el bucle directamente
+	printf ("\nEl numero de fuentes de Carabanchel es %d\n", i);
 	
-	fclose(fCarabanchel);
-	NumFuentes = i; //No haría falta crear variable NumFuentes ya que es la i al acabar el bucle directamente
-	printf("\nEl numero de fuentes es %d\n", NumFuentes);
-	
-	
-	
-	
-	
-	
+	fclose (fLavapies);
+	printf ("\nEl numero de fuentes de Lavapies es %d\n", i);
 	
 	return 0;
 }
