@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-int main () {
 	
 	//Declaracion de structs
 	struct TDatosFuente {
@@ -10,7 +8,19 @@ int main () {
 	int turbidez;
 	int coliformes;
 	};
+		
+	//Prototipos de las funciones
+	float fmaximoLav(struct TDatosFuente[]);
+	float fmaximoCar(struct TDatosFuente[]);
+	float fmaximoVal(struct TDatosFuente[]);
 	
+	float fminimoLav(struct TDatosFuente[]);
+	float fminimoCar(struct TDatosFuente[]);
+	float fminimoVal(struct TDatosFuente[]);
+
+
+int main () {
+
 	//Declaracion de variables
 	int op;
 	int potable;
@@ -23,6 +33,7 @@ int main () {
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteVal[500];
 	int NumFuentesCar, NumFuentesLav, NumFuentesVal;
+	float maximo=0, minimo=0;
 	
 	
 	//Abrir ficheros	
@@ -54,7 +65,7 @@ int main () {
 	}
 	
 	//Seleccionar programa
-	printf ("\t\t=========PHONTANEROS========= \n\n");
+	printf ("\t\t\t\t=================== PHONTANEROS =================== \n\n");
 	do {
 	printf ("Introduzca una opcion: \n\n");
 	printf ("1 - Buscar datos \n");
@@ -93,7 +104,7 @@ int main () {
 						
 						//Lavapies
 						case 1:
-							printf ("\nDatos de Lavapies:\n");
+							printf ("Datos de Lavapies:\n");
 							printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
 							while (fscanf(fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
 								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteLav[i].fuente, pH, conductividad, turbidez, coliformes);
@@ -110,7 +121,7 @@ int main () {
 						//Carabanchel
 						case 2:
 							i=0;
-							printf ("\nDatos de Carabanchel:\n");
+							printf ("Datos de Carabanchel:\n");
 							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
 							while (fscanf(fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
 								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, pH, conductividad, turbidez, coliformes);
@@ -127,7 +138,7 @@ int main () {
 						//Vallecas
 						case 3:
 							i=0;
-							printf ("\nDatos de Vallecas:\n");
+							printf ("Datos de Vallecas:\n");
 							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
 							while (fscanf(fVallecas, "%s %f %d %d %d", FuenteVal[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
 								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVal[i].fuente, pH, conductividad, turbidez, coliformes);
@@ -145,30 +156,39 @@ int main () {
 				
 				//Buscar una fuente
 				case 2:
+					do{
+						printf ("\nElija un dato a buscar:\n");
+						printf ("1 - pH \n");
+						printf ("2 - Conductividad \n");
+						printf ("3 - Turbidez \n");
+						printf ("4 - Coliformes \n");
+						scanf ("%d", &op);
+					} while (op<1 || op>4);
+						
 					do {
-					printf ("\nSeleccione un barrio: \n");
-					printf ("1 - Lavapies \n");
-					printf ("2 - Carabanchel \n");
-					printf ("3 - Vallecas \n\n");
-					scanf ("%d", &op);
+						printf ("\nSeleccione un barrio: \n");
+						printf ("1 - Lavapies \n");
+						printf ("2 - Carabanchel \n");
+						printf ("3 - Vallecas \n\n");
+						scanf ("%d", &op);
 					} while (op<1 || op>3);
 					
 					switch (op) {
-						
-						//Buscar fuentes en Lavapies
-						case 1:
-							printf ("Introduzca el numero de la fuente: \n");
-						break;
-						
-						//Buscar fuentes en Carabanchel
-						case 2:
-							printf ("Introduzca el numero de la fuente: \n");
-						break;
-				
-						//Buscar fuentes en Vallecas
-						case 3:
-							printf ("Introduzca el numero de la fuente: \n");
-						break;
+					
+					//Buscar fuentes en Lavapies
+					case 1:
+						printf ("\nIntroduzca el numero de la fuente: \n");
+					break;
+					
+					//Buscar fuentes en Carabanchel
+					case 2:
+						printf ("Introduzca el numero de la fuente: \n");
+					break;
+					
+					//Buscar fuentes en Vallecas
+					case 3:
+						printf ("Introduzca el numero de la fuente: \n");
+					break;
 					}
 				break;
 				
@@ -187,17 +207,57 @@ int main () {
 		
 		//Ordenar datos
 		case 2:
+			do{
+				printf ("\nIntroduce que quieres comparar: \n");
+				printf ("1 - pH \n");
+				printf ("2 - Conductividad \n");
+				printf ("3 - Turbidez \n");
+				printf ("4 - Coliformes \n\n");
+				scanf ("%d", &op); 
+			} while (op<1 || op>4);
 			
+			switch (op) {
+			
+				case 1: 
+					printf ("\nComparacion de datos de pH, elija una opcion \n"); 
+					printf ("\n1 - Maximo \n2 - Minimo \n");
+					scanf ("%d", &op); 
+				
+					switch (op){
+							
+						case 1:
+							maximo=fmaximoCar(FuenteCar); 
+							printf ("El pH maximo es: %f \n", maximo); 
+						break;
+							
+						case 2:
+							minimo=fminimoCar(FuenteCar);
+							printf ("El pH minimo es: %f \n", minimo);
+						break;
+					}
+	
+				case 2:
+					printf ("\nComparacion de datos de conductividad \n");
+				break;
+				
+				case 3:
+					printf ("\nComparacion de datos de turbidez \n");
+				break;
+				
+				case 4:
+					printf ("\nComparacion de datos de coliformes \n");
+				break;
+			}
 		break;
 		
 		//Comparar datos
 		case 3:
-				
+			printf ("\nIntroduce que quieres ordenar: \n");	
 		break;
 		
 		//Salir programa
 		case 4: 
-			printf("\nSaliendo del programa...");
+			printf ("\nSaliendo del programa...\n");
 		break;
 	}
 	
@@ -209,6 +269,59 @@ int main () {
 	return 0;
 }
 
+//FUNCIONES
+
+	//MAXIMO
+		
+		//Carabanchel
+			float fmaximoCar(struct TDatosFuente FuenteCar[]) {
+			int i; 
+			float mayor=0;
+			
+			for (i=0;i<30; i++) {
+				if (FuenteCar[i].pH>mayor) {
+					mayor=FuenteCar[i].pH; 
+				}
+			}
+			return mayor; 
+			}
+		//Lavapies
+			float fmaximoLav (struct TDatosFuente FuenteLav[]) {
+			int i; 
+			float mayor=0;
+			
+			for (i=0;i<25; i++) {
+				if (FuenteLav[i].pH>mayor) {
+					mayor=FuenteLav[i].pH; 
+				}
+			}
+			return mayor; 
+			}
+		//Vallecas
+			float fmaximoVal (struct TDatosFuente FuenteVal[]) {
+			int i; 
+			float mayor=0;
+			
+			for (i=0;i<27; i++) {
+				if (FuenteVal[i].pH>mayor) {
+					mayor=FuenteVal[i].pH; 
+				}
+			}
+			return mayor; 
+			}
+	
+	//MINIMO
+			float fminimoCar (struct TDatosFuente FuenteCar[]) {
+			int i;
+			float menor=14;
+			
+			for (i=0; i<30; i++) {
+				if (FuenteCar[i].pH<menor) {
+					menor=FuenteCar[i].pH; 
+				}
+			}
+			return menor;
+			}
 
 //METER ESTO EN UNA FUNCION
 
@@ -234,6 +347,6 @@ int main () {
 	if (coliformes==0 && turbidez<=5 && pH>=6.5 && pH<=8){
 		printf ("El agua es potable\n");
 	} else {
-		printf ("El agua no es potable\n");
+		printf ("El agua no es potable\n");0
 	}
 	*/
