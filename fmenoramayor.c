@@ -138,6 +138,5 @@ float fmenoramayorLav (struct TDatosFuente FuenteLav[]) {
 			}
 		}
 	}
-	
 	return aux;
 }
