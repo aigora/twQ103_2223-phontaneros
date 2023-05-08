@@ -25,7 +25,7 @@ int main () {
 	int op;
 	int NumFuentesCar, NumFuentesLav, NumFuentesVall;
 	int potable;
-	int i=0, n;
+	int i, j, n;
 	float pH;
 	int conductividad, turbidez, coliformes;
 	char fuente[500];
@@ -131,62 +131,47 @@ int main () {
 				case 1:
 					do {
 					printf ("\nSeleccione un barrio: \n");
-					printf ("1 - Lavapies \n");
-					printf ("2 - Carabanchel \n");
+					printf ("1 - Carabanchel \n");
+					printf ("2 - Lavapies \n");
 					printf ("3 - Vallecas \n\n");
 					scanf ("%d", &op);
 					} while (op<1 || op>3);
 					
 					switch (op) {
 						
-						//Lavapies
+						//Caranchel
 						case 1:
-							printf ("Datos de Lavapies:\n");
+							printf ("Datos de Carabanchel:\n");
 							printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
-							while (fscanf(fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
-								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteLav[i].fuente, pH, conductividad, turbidez, coliformes);
-	
-								FuenteLav[i].pH = pH;
-								FuenteLav[i].conductividad = conductividad;
-								FuenteLav[i].turbidez = turbidez;
-								FuenteLav[i].coliformes = coliformes;
-								i++;
-							}
-							printf ("\nEl numero de fuentes de Lavapies es %d\n", i);
+							for(i=0; i<NumFuentesLav; i++){
+							
+								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, FuenteCar[i].pH, FuenteCar[i].conductividad, FuenteCar[i].turbidez, FuenteCar[i].coliformes);
+						}
+					
+							printf ("\nEl numero de fuentes de Lavapies es %d\n", NumFuentesLav);
 						break;
 						
-						//Carabanchel
+						//Lavapies
 						case 2:
-							i=0;
-							printf ("Datos de Carabanchel:\n");
-							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
-							while (fscanf(fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
-								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, pH, conductividad, turbidez, coliformes);
-
-								FuenteCar[i].pH = pH;
-								FuenteCar[i].conductividad = conductividad;
-								FuenteCar[i].turbidez = turbidez;
-								FuenteCar[i].coliformes = coliformes;
-								i++;	
+							printf ("Datos de Lavapies:\n");
+							printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
+							for(i=0; i<NumFuentesLav; i++){
+								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteLav[i].fuente, FuenteLav[i].pH, FuenteLav[i].conductividad, FuenteLav[i].turbidez, FuenteLav[i].coliformes);
+	
 							}
-							printf ("\nEl numero de fuentes de Carabanchel es %d\n", i);
+							printf ("\nEl numero de fuentes de Lavapies es %d\n", NumFuentesLav);
 						break;
 				
 						//Vallecas
 						case 3:
-							i=0;
 							printf ("Datos de Vallecas:\n");
-							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
-							while (fscanf(fVallecas, "%s %f %d %d %d", FuenteVall[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
-								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVall[i].fuente, pH, conductividad, turbidez, coliformes);
-
-								FuenteVall[i].pH = pH;
-								FuenteVall[i].conductividad = conductividad;
-								FuenteVall[i].turbidez = turbidez;
-								FuenteVall[i].coliformes = coliformes;
-								i++;
+							printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
+							for(i=0; i<NumFuentesVall; i++){
+							
+								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVall[i].fuente, FuenteVall[i].pH, FuenteVall[i].conductividad, FuenteVall[i].turbidez, FuenteVall[i].coliformes);
+	
 							}
-							printf ("\nEl numero de fuentes de Vallecas es %d\n", i);
+							printf ("\nEl numero de fuentes de Vallecas es %d\n", NumFuentesVall);
 						break;
 					}
 				break;
