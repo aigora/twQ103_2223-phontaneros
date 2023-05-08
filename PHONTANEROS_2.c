@@ -23,20 +23,42 @@ int main () {
 
 	//Declaracion de variables
 	int op;
+	int NumFuentesCar, NumFuentesLav, NumFuentesVall;
 	int potable;
 	int i=0, n;
 	float pH;
 	int conductividad, turbidez, coliformes;
 	char fuente[500];
 	int opcion;
+	float maximo, minimo;
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteCar[500];
-	struct TDatosFuente FuenteVal[500];
-	int NumFuentesCar, NumFuentesLav, NumFuentesVal;
-	float maximo=0, minimo=0;
+	struct TDatosFuente FuenteVall[500];
 	
 	
-	//Abrir ficheros	
+	
+	//Abrir ficheros y escanearlos	
+
+	FILE *fCarabanchel;
+	
+	fCarabanchel = fopen("fCarabanchel.txt", "r"); 
+	
+	if (fCarabanchel == NULL) {
+		printf ("ERROR, no se puede abrir el fichero.");
+		return 0;
+	}
+	
+	while (fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+		
+		FuenteCar[i].pH = pH;
+		FuenteCar[i].conductividad = conductividad;
+		FuenteCar[i].turbidez = turbidez;
+		FuenteCar[i].coliformes = coliformes;
+		i++;
+	}
+	fclose (fCarabanchel);
+	NumFuentesCar = i; 
+	
 	FILE *fLavapies;
 
 	fLavapies = fopen ("fLavapies.txt", "r"); 
@@ -45,25 +67,40 @@ int main () {
 		printf ("ERROR, no se puede abrir el fichero.");
 		return 0; 	
 	}
+	i=0;	
+	while (fscanf (fLavapies, "%s %f %d %d %d", FuenteLav[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
 	
-	FILE *fCarabanchel;
+		FuenteLav[i].pH = pH;
+		FuenteLav[i].conductividad = conductividad;
+		FuenteLav[i].turbidez = turbidez;
+		FuenteLav[i].coliformes = coliformes;
+		i++;
+	}	
 	
-	fCarabanchel = fopen ("fCarabanchel.txt", "r"); 
-	
-	if (fCarabanchel == NULL) {
-		printf ("ERROR, no se puede abrir el fichero.");
-		return 0;
-	}
+	fclose (fLavapies);
+	NumFuentesLav = i;
 	
 	FILE *fVallecas;
-	
+
 	fVallecas = fopen ("fVallecas.txt", "r"); 
 	
 	if (fVallecas == NULL) {
 		printf ("ERROR, no se puede abrir el fichero.");
-		return 0;
+		return 0; 	
 	}
+	i=0;	
+	while (fscanf (fVallecas, "%s %f %d %d %d", FuenteVall[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+
+		FuenteVall[i].pH = pH;
+		FuenteVall[i].conductividad = conductividad;
+		FuenteVall[i].turbidez = turbidez;
+		FuenteVall[i].coliformes = coliformes;
+		i++;
+	}	
 	
+	fclose (fVallecas);
+	NumFuentesVall = i;
+
 	//Seleccionar programa
 	printf ("\t\t\t\t=================== PHONTANEROS =================== \n\n");
 	do {
@@ -140,13 +177,13 @@ int main () {
 							i=0;
 							printf ("Datos de Vallecas:\n");
 							printf ("\nParametros\t pH\t   Conductividad Turbidez Coliformes\n");
-							while (fscanf(fVallecas, "%s %f %d %d %d", FuenteVal[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
-								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVal[i].fuente, pH, conductividad, turbidez, coliformes);
+							while (fscanf(fVallecas, "%s %f %d %d %d", FuenteVall[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF) {
+								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteVall[i].fuente, pH, conductividad, turbidez, coliformes);
 
-								FuenteVal[i].pH = pH;
-								FuenteVal[i].conductividad = conductividad;
-								FuenteVal[i].turbidez = turbidez;
-								FuenteVal[i].coliformes = coliformes;
+								FuenteVall[i].pH = pH;
+								FuenteVall[i].conductividad = conductividad;
+								FuenteVall[i].turbidez = turbidez;
+								FuenteVall[i].coliformes = coliformes;
 								i++;
 							}
 							printf ("\nEl numero de fuentes de Vallecas es %d\n", i);
@@ -311,6 +348,7 @@ int main () {
 			}
 	
 	//MINIMO
+		//Carabanchel
 			float fminimoCar (struct TDatosFuente FuenteCar[]) {
 			int i;
 			float menor=14;
@@ -318,6 +356,32 @@ int main () {
 			for (i=0; i<30; i++) {
 				if (FuenteCar[i].pH<menor) {
 					menor=FuenteCar[i].pH; 
+				}
+			}
+			return menor;
+			}
+			
+		//Lavapies
+			float fminimoLav (struct TDatosFuente FuenteLav[]) {
+			int i;
+			float menor=14;
+			
+			for (i=0; i<25; i++) {
+				if (FuenteLav[i].pH<menor) {
+					menor=FuenteLav[i].pH; 
+				}
+			}
+			return menor;
+			}
+			
+		//Vallecas
+			float fminimoVall (struct TDatosFuente FuenteVall[]) {
+			int i;
+			float menor=14;
+			
+			for (i=0; i<27; i++) {
+				if (FuenteVall[i].pH<menor) {
+					menor=FuenteVall[i].pH; 
 				}
 			}
 			return menor;
