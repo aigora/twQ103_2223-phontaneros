@@ -1,15 +1,15 @@
 #include <stdio.h>
 	
-	//Declaracion de structs
+//Declaracion de structs
 	struct TDatosFuente {
-	char fuente[500];
-	float pH;
-	int conductividad;
-	int turbidez;
-	int coliformes;
+		char fuente[500];
+		float pH;
+		int conductividad;
+		int turbidez;
+		int coliformes;
 	};
 		
-	//Prototipos de las funciones
+//Prototipos de las funciones
 	float fmaximoLav(struct TDatosFuente[]);
 	float fmaximoCar(struct TDatosFuente[]);
 	float fmaximoVall(struct TDatosFuente[]);
@@ -28,11 +28,11 @@
 
 int main () {
 
-	//Declaracion de variables
+//Declaracion de variables
 	int op;
 	int NumFuentesCar, NumFuentesLav, NumFuentesVall;
 	int potable;
-	int i=0, n;
+	int i, j, n;
 	float pH;
 	int conductividad, turbidez, coliformes;
 	char fuente[500];
@@ -41,7 +41,8 @@ int main () {
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteVall[500];
-	
+	int o;
+	float menoramayor;
 	
 	
 	//Abrir ficheros y escanearlos	
@@ -110,7 +111,6 @@ int main () {
 	fclose (fVallecas);
 	NumFuentesVall = i;
 
-	float menoramayor;
 	menoramayor=fmenoramayorLav(FuenteLav);
 	for(i=0;i<25;i++) {
 		printf("%s: ", FuenteLav[i].fuente);
