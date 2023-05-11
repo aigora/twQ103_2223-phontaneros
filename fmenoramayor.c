@@ -21,6 +21,10 @@
 	float fmenoramayorLav(struct TDatosFuente[]);
 	float fmenoramayorCar(struct TDatosFuente[]);
 	float fmenoramayorVall(struct TDatosFuente[]);
+	
+	float fmayoramenorLav(struct TDatosFuente[]);
+	float fmayoramenorCar(struct TDatosFuente[]);
+	float fmayoramenorVall(struct TDatosFuente[]);
 
 int main () {
 
@@ -105,12 +109,12 @@ int main () {
 	
 	fclose (fVallecas);
 	NumFuentesVall = i;
-	
-	int o;
+
 	float menoramayor;
 	menoramayor=fmenoramayorLav(FuenteLav);
-	for(o=0;o<25;o++) {
-		printf("%.2f \n",FuenteLav[o].pH);
+	for(i=0;i<25;i++) {
+		printf("%s: ", FuenteLav[i].fuente);
+		printf("%.2f \n",FuenteLav[i].pH);
 	}
 		
 		
@@ -122,19 +126,17 @@ int main () {
 	return 0;
 }
 
-
-
 float fmenoramayorLav (struct TDatosFuente FuenteLav[]) {
 	
-	int o,h;
+	int i,j;
 	float aux;
 	
-	for (o=0;o<25;o++) {
-		for (h=o+1;h<25;h++) {
-			if (FuenteLav[o].pH>FuenteLav[h].pH) {
-				aux=FuenteLav[o].pH;
-				FuenteLav[o].pH=FuenteLav[h].pH;
-				FuenteLav[h].pH=aux;
+	for (i=0;i<25;i++) {
+		for (j=i+1;j<25;j++) {
+			if (FuenteLav[i].pH>FuenteLav[j].pH) {
+				aux=FuenteLav[i].pH;
+				FuenteLav[i].pH=FuenteLav[j].pH;
+				FuenteLav[j].pH=aux;
 			}
 		}
 	}
