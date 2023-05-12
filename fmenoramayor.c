@@ -111,12 +111,35 @@ int main () {
 	fclose (fVallecas);
 	NumFuentesVall = i;
 
-	menoramayor=fmenoramayorLav(FuenteLav);
-	for(i=0;i<25;i++) {
-		printf("%s: ", FuenteLav[i].fuente);
-		printf("%.2f \n",FuenteLav[i].pH);
-	}
+	do {
+		printf ("Introduzca una opcion: \n\n");
+		printf ("1 - Carabanchel \n");
+		printf ("2 - Lavapies \n");
+		printf ("3 - Vallecas \n");
+		scanf ("%d", &op);
+	} while (op<1 || op>3);
+	
+	switch (op) {
 		
+		//Carabanchel
+		case 1:
+			
+				menoramayor=fmenoramayorLav(FuenteLav);
+				for(i=0;i<25;i++) {
+					printf("%s: ", FuenteLav[i].fuente);
+					printf("%.2f \n",FuenteLav[i].pH);
+				}
+	
+		break;
+		
+		case 2:
+			
+		break;
+		
+		case 3:
+			
+		break;
+	}
 		
 	//Cerrar ficheros
 	fclose (fLavapies);
