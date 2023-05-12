@@ -113,31 +113,39 @@ int main () {
 
 	do {
 		printf ("Introduzca una opcion: \n\n");
-		printf ("1 - Carabanchel \n");
-		printf ("2 - Lavapies \n");
+		printf ("1 - Lavapies \n");
+		printf ("2 - Carabanchel \n");
 		printf ("3 - Vallecas \n");
 		scanf ("%d", &op);
 	} while (op<1 || op>3);
 	
 	switch (op) {
 		
-		//Carabanchel
+		//Lavapies
 		case 1:
-			
-				menoramayor=fmenoramayorLav(FuenteLav);
-				for(i=0;i<25;i++) {
-					printf("%s: ", FuenteLav[i].fuente);
-					printf("%.2f \n",FuenteLav[i].pH);
-				}
-	
+			menoramayor=fmenoramayorLav(FuenteLav);
+			for(i=0;i<25;i++) {
+				printf("%s: ", FuenteLav[i].fuente);
+				printf("%.2f \n",FuenteLav[i].pH);
+			}
 		break;
 		
+		//Carabanchel
 		case 2:
-			
+			menoramayor=fmenoramayorCar(FuenteCar);
+			for(i=0;i<30;i++) {
+				printf("%s: ", FuenteCar[i].fuente);
+				printf("%.2f \n",FuenteCar[i].pH);
+			}
 		break;
 		
+		//Vallecas
 		case 3:
-			
+			menoramayor=fmenoramayorVall(FuenteVall);
+			for(i=0;i<27;i++) {
+				printf("%s: ", FuenteVall[i].fuente);
+				printf("%.2f \n",FuenteVall[i].pH);
+			}			
 		break;
 	}
 		
@@ -160,6 +168,40 @@ float fmenoramayorLav (struct TDatosFuente FuenteLav[]) {
 				aux=FuenteLav[i].pH;
 				FuenteLav[i].pH=FuenteLav[j].pH;
 				FuenteLav[j].pH=aux;
+			}
+		}
+	}
+	return aux;
+}
+
+float fmenoramayorCar (struct TDatosFuente FuenteCar[]) {
+	
+	int i,j;
+	float aux;
+	
+	for (i=0;i<30;i++) {
+		for (j=i+1;j<30;j++) {
+			if (FuenteCar[i].pH>FuenteCar[j].pH) {
+				aux=FuenteCar[i].pH;
+				FuenteCar[i].pH=FuenteCar[j].pH;
+				FuenteCar[j].pH=aux;
+			}
+		}
+	}
+	return aux;
+}
+
+float fmenoramayorVall (struct TDatosFuente FuenteVall[]) {
+
+	int i,j;
+	float aux;
+	
+	for (i=0;i<27;i++) {
+		for (j=i+1;j<27;j++) {
+			if (FuenteVall[i].pH>FuenteVall[i].pH) {
+				aux=FuenteVall[i].pH;
+				FuenteVall[i].pH=FuenteVall[j].pH;
+				FuenteVall[j].pH=aux;
 			}
 		}
 	}
