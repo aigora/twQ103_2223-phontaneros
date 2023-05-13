@@ -1013,7 +1013,7 @@ int main () {
 				}
 			}
 				//Lavapiés
-				void fcompararpHLav(struct TDatosFuente FuenteLav[]){
+			/*	void fcompararpHLav(struct TDatosFuente FuenteLav[]){
 					int  n, i; 
 					char a[40], b[40]; 
 					float ph1, ph2; 
@@ -1035,7 +1035,7 @@ int main () {
 					}else if (ph1==ph2){
 						printf("La %s y la %s tienen el mismo pH", a, b);
 					}
-				}
+				}*/
 		//DIFERENTE BARRIO
 		
 	
