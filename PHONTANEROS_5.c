@@ -86,13 +86,13 @@ int main () {
 	}
 	fscanf(fCarabanchel, "%d", &NumFuentesCar); 
 	i=0;
-	for(i=0; i<NumFuentesCar; i++){ //cambie esto tmbien para ver si salia y quite un fallo
-	 	//fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF;
+	while (fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
+		
 		FuenteCar[i].pH = pH;
 		FuenteCar[i].conductividad = conductividad;
 		FuenteCar[i].turbidez = turbidez;
 		FuenteCar[i].coliformes = coliformes;
-		fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF;
+		i++;
 	}
 //	rewind(fCarabanchel); intente meter esto para quue el fichero se mostrara entero en opcion1, pero no lo consegui -ale
 	fclose (fCarabanchel);
