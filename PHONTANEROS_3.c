@@ -77,7 +77,7 @@ int main () {
 		printf ("ERROR, no se puede abrir el fichero.");
 		return 0;
 	}
-	
+	i=0;
 	while (fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF){
 		
 		FuenteCar[i].pH = pH;
