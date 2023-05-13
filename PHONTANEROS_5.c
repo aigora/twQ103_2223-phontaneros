@@ -47,8 +47,8 @@ int main () {
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteVall[500];
-	int o;
 	float menoramayor;
+	float mayoramenor;
 	
 //Abrir ficheros y escanearlos	
 
@@ -84,8 +84,8 @@ int main () {
 		printf ("ERROR, no se puede abrir el fichero.");
 		return 0;
 	}
-	fscanf(fCarabanchel, "%d", &NumFuentesCar); 
 	
+	i=0;
 	for(i=0; i<NumFuentesCar; i++){ //cambie esto tmbien para ver si salia y quite un fallo
 	 	//fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF;
 		FuenteCar[i].pH = pH;
@@ -243,7 +243,7 @@ int main () {
 			}
 		break;
 		
-//		//Comparar datos
+		//Comparar datos
 		case 2:
 			do{
 				printf ("\nIntroduce que quieres comparar: \n");
@@ -260,81 +260,98 @@ int main () {
 				case (1): 
 					do {
 					
-					printf ("\nComparacion de datos de pH\n\n");
-					printf ("Elija una opcion: \n");
-					printf ("1 - maximo \n");
-					printf ("2 - minimo \n");
-					printf ("3 - Comparar pH de 2 fuentes de un mismo barrio \n");
-					printf ("4 - Comparar pH de 2 fuentes de barrios diferentes \n");
-					scanf ("%d", &op); 
-					} while (op<1 || op>5);
+						printf ("\nComparacion de datos de pH\n\n");
+						printf ("Elija una opcion: \n");
+						printf ("1 - Maximo \n");
+						printf ("2 - Minimo \n");
+						printf ("3 - Comparar pH de 2 fuentes de un mismo barrio \n");
+						printf ("4 - Comparar pH de 2 fuentes de barrios diferentes \n");
+						scanf ("%d", &op); 
+					} while (op<1 || op>4);
 					
-					switch(op){
-						case(1):
-							do{
-							printf ("Elija un barrio: \n");
-							printf ("1 - Carabanchel\n");
-							printf ("2 - Lavapies \n");
-							printf ("3 - Vallecas \n");
-							scanf ("%d", &op); 
-							} while (op<1 || op>4);
-							switch(op){
-								case(1):
+					switch (op) {
+						
+						case 1:
+							do {
+								printf ("Elija un barrio: \n");
+								printf ("1 - Carabanchel\n");
+								printf ("2 - Lavapies \n");
+								printf ("3 - Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
 									maximo=fmaximoCar(FuenteCar); 
 									printf ("El pH maximo es: %f \n", maximo);
 								break;
-								case(2):
+								
+								case 2:
 									maximo=fmaximoLav(FuenteLav); 
 									printf ("El pH maximo es: %f \n", maximo); 
 								break;
-								case(3):
+								
+								case 3:
 									maximo=fmaximoVall(FuenteVall); 
 										printf ("El pH maximo es: %f \n", maximo); 
 								break;	
-							}break;
-						case(2):
-							do{
-							printf ("Elija un barrio: \n");
-							printf ("1 - Carabanchel\n");
-							printf ("2 - Lavapies \n");
-							printf ("3 - Vallecas \n");
-							scanf ("%d", &op); 
-							}while (op<1 || op>4);
-							switch(op){
-								case(1):
-									minimo=fminimoCar(FuenteCar);
-										printf ("El pH minimo es: %f \n", minimo);
-									break;
-								case(2):
-									minimo=fminimoLav(FuenteLav);
-										printf ("El pH minimo es: %f \n", minimo);
-									break;
-								case(3):
-									minimo=fminimoVall(FuenteVall);
-										printf ("El pH minimo es: %f \n", minimo);
-									break;				
-							}break;
-						case(3):
-							do{
-							printf ("Elija un barrio: \n");
-							printf ("1 - Carabanchel\n");
-							printf ("2 - Lavapies \n");
-							printf ("3 - Vallecas \n");
-							scanf ("%d", &op); 
-							}while (op<1 || op>4);
+							}
+						break;
 							
-							switch(op){
-								case(1):
+						case 2:
+							do {
+							printf ("Elija un barrio: \n");
+							printf ("1 - Carabanchel\n");
+							printf ("2 - Lavapies \n");
+							printf ("3 - Vallecas \n");
+							scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									minimo=fminimoCar(FuenteCar);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;
+								
+								case 2:
+									minimo=fminimoLav(FuenteLav);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;
+									
+								case 3:
+									minimo=fminimoVall(FuenteVall);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;				
+							}
+						break;
+							
+						case 3:
+							do {
+								printf ("Elija un barrio: \n");
+								printf ("1 - Carabanchel\n");
+								printf ("2 - Lavapies \n");
+								printf ("3 - Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
 									fcompararpHCar(FuenteCar, NumFuentesCar);	
-								break;	
-								case (2): 
+								break;
+									
+								case 2: 
 									fcompararpHLav(FuenteLav); 
 								break; 
 							//	case(3): 
 								//	fcompararpHVall (FuenteVall); 
 							//	break; 
-							}break;
-					}break;
+							}
+						break;
+					}
+				break;
 				
 				//Comparar conductividad
 				case 2:
@@ -389,14 +406,30 @@ int main () {
 							switch (op) {
 								
 								case 1:
-									menoramayor=fmenoramayorLav(FuenteLav);
-									for(o=0;o<25;o++) {
-										printf("%s %.2f \n",FuenteLav[i].fuente, FuenteLav[o].pH);
-									}
-								break;
+									do {
+										printf("\nSeleccione una opcion:\n");
+										printf("1 - De menor a mayor\n");
+										printf("2 - De mayor a menor\n\n");
+										scanf("%d", &op);
+									} while (op<1 || op>2);
+							
+									switch (op) {
 								
-								case 2:
-									
+										case 1:
+											menoramayor=fmenoramayorLav(FuenteLav);
+											for(i=0;i<25;i++) {
+												printf("%.2f \n",FuenteLav[i].pH);
+											}
+										break;
+								
+										case 2:
+											mayoramenor=fmayoramenorLav(FuenteLav);
+											for(i=0;i<25;i++) {
+												printf("%s: ", FuenteLav[i].fuente);
+												printf("%.2f \n",FuenteLav[i].pH);
+											}
+										break;
+									}
 								break;
 							}
 						break;
@@ -669,12 +702,58 @@ int main () {
 	//MAYOR A MENOR
 
 		//Carabanchel
-		
+		float fmayoramenorCar (struct TDatosFuente FuenteCar[]) {
+	
+			int i,j;
+			float aux;
+	
+			for (i=0;i<30;i++) {
+				for (j=i+1;j<30;j++) {
+					if (FuenteCar[i].pH<FuenteCar[j].pH) {
+						aux=FuenteCar[i].pH;
+						FuenteCar[i].pH=FuenteCar[j].pH;
+						FuenteCar[j].pH=aux;
+					}
+				}
+			}
+		return aux;
+		}
 		
 		//Lavapies
-		
+		float fmayoramenorLav (struct TDatosFuente FuenteLav[]) {
+	
+			int i,j;
+			float aux;
+	
+			for (i=0;i<25;i++) {
+				for (j=i+1;j<25;j++) {
+					if (FuenteLav[i].pH<FuenteLav[j].pH) {
+						aux=FuenteLav[i].pH;
+						FuenteLav[i].pH=FuenteLav[j].pH;
+						FuenteLav[j].pH=aux;
+					}
+				}
+			}
+			return aux;
+		}
 		
 		//Vallecas
+		float fmayoramenorVall (struct TDatosFuente FuenteVall[]) {
+	
+			int i,j;
+			float aux;
+	
+			for (i=0;i<27;i++) {
+				for (j=i+1;j<27;j++) {
+					if (FuenteVall[i].pH<FuenteVall[j].pH) {
+						aux=FuenteVall[i].pH;
+						FuenteVall[i].pH=FuenteVall[j].pH;
+						FuenteVall[j].pH=aux;
+					}
+				}
+			}
+		return aux;
+		}
 		
 	//COMPARAR DATOS
 	
