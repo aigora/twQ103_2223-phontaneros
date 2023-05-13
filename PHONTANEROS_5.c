@@ -25,6 +25,10 @@
 	float fmayoramenorLav(struct TDatosFuente[]);
 	float fmayoramenorCar(struct TDatosFuente[]);
 	float fmayoramenorVall(struct TDatosFuente[]);
+	
+	float frecorridoLav(struct TDatosFuente[]);
+	float frecorridoCar(struct TDatosFuente[]);
+	float frecorridoVall(struct TDatosFuente[]);
 
 	void fcompararpHCar(struct TDatosFuente[], int);
 	void fcompararpHLav(struct TDatosFuente[]); 
@@ -350,8 +354,9 @@ int main () {
 						printf ("Elija una opcion: \n");
 						printf ("1 - Maximo \n");
 						printf ("2 - Minimo \n");
-						printf ("3 - Comparar pH de 2 fuentes de un mismo barrio \n");
-						printf ("4 - Comparar pH de 2 fuentes de barrios diferentes \n");
+						printf ("3 - Recorrido\n");
+						printf ("4 - Comparar pH de 2 fuentes de un mismo barrio \n");
+						printf ("5 - Comparar pH de 2 fuentes de barrios diferentes \n");
 						scanf ("%d", &op); 
 					} while (op<1 || op>4);
 					
@@ -412,8 +417,32 @@ int main () {
 								break;				
 							}
 						break;
-							
 						case 3:
+							do {
+							printf ("Elija un barrio: \n");
+							printf ("1 - Carabanchel\n");
+							printf ("2 - Lavapies \n");
+							printf ("3 - Vallecas \n");
+							scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									printf ("El recorrido es: %f \n", frecorridoCar(FuenteCar));
+								break;
+								
+								case 2:
+									printf ("El recorrido es: %f \n",frecorridoLav(FuenteLav));
+								break;
+									
+								case 3:
+									printf ("El recorrido es: %f \n",frecorridoVall(FuenteVall));
+								break;				
+							}
+						break;
+							
+						case 4:
 							do {
 								printf ("Elija un barrio: \n");
 								printf ("1 - Carabanchel\n");
@@ -876,7 +905,80 @@ int main () {
 			}
 		return aux;
 		}
-		
+//RECORRIDO
+	
+		//Carabanchel
+			float frecorridoCar (struct TDatosFuente FuenteCar[]) {
+			
+			int i; 
+			float mayor=0;
+			float menor=14;
+			float recorr;
+			
+			for (i=0;i<30; i++) {
+				if (FuenteCar[i].pH>mayor) {
+					mayor=FuenteCar[i].pH; 
+				}
+			}
+			
+			for (i=0; i<30; i++) {
+				if (FuenteCar[i].pH<menor) {
+					menor=FuenteCar[i].pH; 
+				}
+			}
+			
+			recorr = mayor-menor;
+			
+			return recorr;
+			}
+			
+		//Lavapies
+			float frecorridoLav (struct TDatosFuente FuenteLav[]) {
+			int i; 
+			float mayor=0;
+			float menor=14;
+			float recorr;
+			
+			for (i=0;i<25; i++) {
+				if (FuenteLav[i].pH>mayor) {
+					mayor=FuenteLav[i].pH; 
+				}
+			}
+			
+			for (i=0; i<25; i++) {
+				if (FuenteLav[i].pH<menor) {
+					menor=FuenteLav[i].pH; 
+				}
+			}
+			
+			recorr = mayor-menor;
+			
+			return recorr;
+			}
+			
+		//Vallecas
+			float frecorridoVall (struct TDatosFuente FuenteVall[]) {
+			int i; 
+			float mayor=0;
+			float menor=14;
+			float recorr;
+			
+			for (i=0;i<27; i++) {
+				if (FuenteVall[i].pH>mayor) {
+					mayor=FuenteVall[i].pH; 
+				}
+			}
+			
+			for (i=0; i<27; i++) {
+				if (FuenteVall[i].pH<menor) {
+					menor=FuenteVall[i].pH; 
+				}
+			}
+			
+			recorr = mayor-menor;
+			
+			return recorr;
+			}		
 	//COMPARAR DATOS
 	
 		//MISMO BARRIO
@@ -890,14 +992,14 @@ int main () {
 				scanf("%s", a);
 				printf("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
 				scanf("%s", b);
-				for(i=1; i<=NumFuentesCar; i++){
+				for(i=0; i<NumFuentesCar; i++){
 		
 					if(FuenteCar[i].fuente==a){
 						ph1=FuenteCar[i].pH;
 					//	printf("Ph1=%f \n", FuenteCar[i].pH); 
 					} 
 				}
-				for(j=1; j<=NumFuentesCar; j++){
+				for(j=0; j<NumFuentesCar; j++){
 					if(FuenteCar[j].fuente==b){
 						ph2=FuenteCar[j].pH;
 					}
