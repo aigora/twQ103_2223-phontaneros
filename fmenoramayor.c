@@ -41,9 +41,8 @@ int main () {
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteVall[500];
-	int o;
 	float menoramayor;
-	
+	float mayoramenor;
 	
 	//Abrir ficheros y escanearlos	
 
@@ -125,8 +124,8 @@ int main () {
 		case 1:
 			do {
 				printf ("Introduzca una opcion: \n\n");
-				printf ("De menor a mayor \n");
-				printf ("De mayor a menor \n");
+				printf ("1 - De menor a mayor \n");
+				printf ("2 - De mayor a menor \n");
 				scanf("%d", &op);
 			} while (op<1 || op>2);
 			
@@ -141,7 +140,11 @@ int main () {
 				break;
 				
 				case 2:
-					
+					mayoramenor=fmayoramenorLav(FuenteLav);
+					for(i=0;i<25;i++) {
+						printf("%s: ", FuenteLav[i].fuente);
+						printf("%.2f \n",FuenteLav[i].pH);
+					}
 				break;
 			}
 		break;
@@ -150,8 +153,8 @@ int main () {
 		case 2:
 			do {
 				printf ("Introduzca una opcion: \n\n");
-				printf ("De menor a mayor \n");
-				printf ("De mayor a menor \n");
+				printf ("1 - De menor a mayor \n");
+				printf ("2 - De mayor a menor \n");
 				scanf("%d", &op);
 			} while (op<1 || op>2);
 			
@@ -166,7 +169,11 @@ int main () {
 				break;
 				
 				case 2:
-					
+					mayoramenor=fmayoramenorCar(FuenteCar);
+					for(i=0;i<30;i++) {
+						printf("%s: ", FuenteCar[i].fuente);
+						printf("%.2f \n",FuenteCar[i].pH);
+					}
 				break;
 			}
 		break;
@@ -175,8 +182,8 @@ int main () {
 		case 3:
 			do {
 				printf ("Introduzca una opcion: \n\n");
-				printf ("De menor a mayor \n");
-				printf ("De mayor a menor \n");
+				printf ("1 - De menor a mayor \n");
+				printf ("2 - De mayor a menor \n");
 				scanf("%d", &op);
 			} while (op<1 || op>2);
 			
@@ -191,7 +198,11 @@ int main () {
 			break;
 			
 			case 2:
-				
+				mayoramenor=fmayoramenorVall(FuenteVall);
+					for(i=0;i<27;i++) {
+						printf("%s: ", FuenteVall[i].fuente);
+						printf("%.2f \n",FuenteVall[i].pH);
+					}
 			break;
 			}			
 		break;
@@ -205,6 +216,7 @@ int main () {
 	return 0;
 }
 
+//MENOR A MAYOR
 float fmenoramayorLav (struct TDatosFuente FuenteLav[]) {
 	
 	int i,j;
@@ -247,6 +259,58 @@ float fmenoramayorVall (struct TDatosFuente FuenteVall[]) {
 	for (i=0;i<27;i++) {
 		for (j=i+1;j<27;j++) {
 			if (FuenteVall[i].pH>FuenteVall[j].pH) {
+				aux=FuenteVall[i].pH;
+				FuenteVall[i].pH=FuenteVall[j].pH;
+				FuenteVall[j].pH=aux;
+			}
+		}
+	}
+	return aux;
+}
+
+//MAYOR A MENOR
+float fmayoramenorLav (struct TDatosFuente FuenteLav[]) {
+	
+	int i,j;
+	float aux;
+	
+	for (i=0;i<25;i++) {
+		for (j=i+1;j<25;j++) {
+			if (FuenteLav[i].pH<FuenteLav[j].pH) {
+				aux=FuenteLav[i].pH;
+				FuenteLav[i].pH=FuenteLav[j].pH;
+				FuenteLav[j].pH=aux;
+			}
+		}
+	}
+	return aux;
+}
+
+float fmayoramenorCar (struct TDatosFuente FuenteCar[]) {
+	
+	int i,j;
+	float aux;
+	
+	for (i=0;i<30;i++) {
+		for (j=i+1;j<30;j++) {
+			if (FuenteCar[i].pH<FuenteCar[j].pH) {
+				aux=FuenteCar[i].pH;
+				FuenteCar[i].pH=FuenteCar[j].pH;
+				FuenteCar[j].pH=aux;
+			}
+		}
+	}
+	return aux;
+}
+
+float fmayoramenorVall (struct TDatosFuente FuenteVall[]) {
+	
+	int i,j;
+	float aux;
+	
+	for (i=0;i<27;i++) {
+		for (j=i+1;j<27;j++) {
+			if (FuenteVall[i].pH<FuenteVall[j].pH) {
 				aux=FuenteVall[i].pH;
 				FuenteVall[i].pH=FuenteVall[j].pH;
 				FuenteVall[j].pH=aux;
