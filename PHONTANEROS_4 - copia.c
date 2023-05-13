@@ -45,8 +45,8 @@ int main () {
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteVall[500];
-	int o;
 	float menoramayor;
+	float mayoramenor;
 	
 //Abrir ficheros y escanearlos	
 
@@ -157,10 +157,10 @@ int main () {
 						case 1:
 							printf ("\nDatos de Carabanchel:\n");
 							printf ("Parametros\tpH\t   Conductividad Turbidez Coliformes\n");
-							for(i=0; i<NumFuentesLav; i++) {
+							for(i=0; i<NumFuentesCar; i++) {
 								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, FuenteCar[i].pH, FuenteCar[i].conductividad, FuenteCar[i].turbidez, FuenteCar[i].coliformes);
 							}
-							printf ("\nEl numero de fuentes de Lavapies es %d\n", NumFuentesLav);
+							printf ("\nEl numero de fuentes de Carabanchel es %d\n", NumFuentesCar);
 						break;
 						
 						//Ver Lavapies
@@ -376,8 +376,8 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorLav(FuenteLav);
-									for(o=0;o<25;o++) {
-										printf("%.2f \n",FuenteLav[o].pH);
+									for(i=0;i<25;i++) {
+										printf("%.2f \n",FuenteLav[i].pH);
 									}
 								break;
 								
@@ -677,15 +677,15 @@ int main () {
 		//Carabanchel
 			float fmenoramayorCar (struct TDatosFuente FuenteCar[]) {
 	
-			int o,h;
+			int i,j;
 			float aux;
 	
-			for (o=0;o<30;o++) {
-				for (h=o+1;h<30;h++) {
-					if (FuenteCar[o].pH>FuenteCar[h].pH) {
-						aux=FuenteCar[o].pH;
-						FuenteCar[o].pH=FuenteCar[h].pH;
-						FuenteCar[h].pH=aux;
+			for (i=0;i<30;i++) {
+				for (j=i+1;j<30;j++) {
+					if (FuenteCar[i].pH>FuenteCar[j].pH) {
+						aux=FuenteCar[i].pH;
+						FuenteCar[i].pH=FuenteCar[j].pH;
+						FuenteCar[j].pH=aux;
 					}
 				}
 			}
@@ -695,15 +695,15 @@ int main () {
 		//Lavapies
 			float fmenoramayorLav (struct TDatosFuente FuenteLav[]) {
 	
-			int o,h;
+			int i,j;
 			float aux;
 	
-			for (o=0;o<25;o++) {
-				for (h=o+1;h<25;h++) {
-					if (FuenteLav[o].pH>FuenteLav[h].pH) {
-						aux=FuenteLav[o].pH;
-						FuenteLav[o].pH=FuenteLav[h].pH;
-						FuenteLav[h].pH=aux;
+			for (i=0;i<25;i++) {
+				for (j=i+1;j<25;j++) {
+					if (FuenteLav[i].pH>FuenteLav[j].pH) {
+						aux=FuenteLav[i].pH;
+						FuenteLav[i].pH=FuenteLav[j].pH;
+						FuenteLav[j].pH=aux;
 					}
 				}
 			}
@@ -713,15 +713,15 @@ int main () {
 		//Vallecas
 			float fmenoramayorVall (struct TDatosFuente FuenteVall[]) {
 	
-			int o,h;
+			int i,j;
 			float aux;
 	
-			for (o=0;o<27;o++) {
-				for (h=o+1;h<27;h++) {
-					if (FuenteVall[o].pH>FuenteVall[h].pH) {
-						aux=FuenteVall[o].pH;
-						FuenteVall[o].pH=FuenteVall[h].pH;
-						FuenteVall[h].pH=aux;
+			for (i=0;i<27;i++) {
+				for (j=i+1;j<27;j++) {
+					if (FuenteVall[i].pH>FuenteVall[j].pH) {
+						aux=FuenteVall[i].pH;
+						FuenteVall[i].pH=FuenteVall[j].pH;
+						FuenteVall[j].pH=aux;
 					}
 				}
 			}
