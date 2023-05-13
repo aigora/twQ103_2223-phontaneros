@@ -84,7 +84,7 @@ int main () {
 		printf ("ERROR, no se puede abrir el fichero.");
 		return 0;
 	}
-	
+	fscanf(fCarabanchel, "%d", &NumFuentesCar); 
 	i=0;
 	for(i=0; i<NumFuentesCar; i++){ //cambie esto tmbien para ver si salia y quite un fallo
 	 	//fscanf (fCarabanchel, "%s %f %d %d %d", FuenteCar[i].fuente, &pH, &conductividad, &turbidez, &coliformes)!= EOF;
@@ -194,15 +194,6 @@ int main () {
 				
 				//Buscar una fuente
 				case 2:
-					do{
-						printf ("\nElija un dato a buscar:\n");
-						printf ("1 - pH \n");
-						printf ("2 - Conductividad \n");
-						printf ("3 - Turbidez \n");
-						printf ("4 - Coliformes \n");
-						scanf ("%d", &op);
-					} while (op<1 || op>4);
-						
 					do {
 						printf ("\nSeleccione un barrio: \n");
 						printf ("1 - Lavapies \n");
@@ -239,6 +230,102 @@ int main () {
 						printf ("3 - Vallecas \n\n");
 						scanf ("%d", &op);
 					} while (op<1 || op>3);
+					
+					switch (op) {
+						
+						//Buscar un dato en Lavapies
+						case 1:
+							do{
+								printf ("\nElija un dato a buscar:\n");
+								printf ("1 - pH \n");
+								printf ("2 - Conductividad \n");
+								printf ("3 - Turbidez \n");
+								printf ("4 - Coliformes \n");
+								scanf ("%d", &op);
+							} while (op<1 || op>4);
+							
+							switch (op) {
+								
+								case 1:
+									
+								break;
+								
+								case 2:
+									
+								break;
+								
+								case 3:
+								
+								break;
+								
+								case 4:
+									
+								break;
+							}
+						break;
+						
+						//Buscar un dato en Carabanchel
+						case 2:
+							do{
+								printf ("\nElija un dato a buscar:\n");
+								printf ("1 - pH \n");
+								printf ("2 - Conductividad \n");
+								printf ("3 - Turbidez \n");
+								printf ("4 - Coliformes \n");
+								scanf ("%d", &op);
+							} while (op<1 || op>4);
+							
+							switch (op) {
+								
+								case 1:
+									
+								break;
+								
+								case 2:
+									
+								break;
+								
+								case 3:
+								
+								break;
+								
+								case 4:
+									
+								break;
+							}
+						break;
+						
+						//Buscar un dato en Vallecas
+						case 3:
+							do{
+								printf ("\nElija un dato a buscar:\n");
+								printf ("1 - pH \n");
+								printf ("2 - Conductividad \n");
+								printf ("3 - Turbidez \n");
+								printf ("4 - Coliformes \n");
+								scanf ("%d", &op);
+							} while (op<1 || op>4);
+							
+							switch (op) {
+								
+								case 1:
+									
+								break;
+								
+								case 2:
+									
+								break;
+								
+								case 3:
+								
+								break;
+								
+								case 4:
+									
+								break;
+							}
+						break;
+					}
 				break;
 			}
 		break;
@@ -257,9 +344,8 @@ int main () {
 			switch (op) {
 			
 				//Comparar pH
-				case (1): 
+				case 1: 
 					do {
-					
 						printf ("\nComparacion de datos de pH\n\n");
 						printf ("Elija una opcion: \n");
 						printf ("1 - Maximo \n");
@@ -474,8 +560,26 @@ int main () {
 								printf("\nSeleccione una opcion:\n");
 								printf("1 - De menor a mayor\n");
 								printf("2 - De mayor a menor\n\n");
-								scanf("%d", op);
+								scanf("%d", &op);
 							} while (op<1 || op>2);
+							
+							switch (op) {
+								
+								case 1:
+									menoramayor=fmenoramayorCar(FuenteCar);
+									for(i=0;i<30;i++) {
+										printf("%.2f \n",FuenteCar[i].pH);
+									}
+								break;
+								
+								case 2:
+									mayoramenor=fmayoramenorCar(FuenteCar);
+									for(i=0;i<30;i++) {
+										printf("%s: ", FuenteCar[i].fuente);
+										printf("%.2f \n",FuenteCar[i].pH);
+									}
+								break;
+							}
 						break;
 						
 						//Ordenar conductividad Carabanchel
@@ -518,8 +622,26 @@ int main () {
 								printf("\nSeleccione una opcion:\n");
 								printf("1 - De menor a mayor\n");
 								printf("2 - De mayor a menor\n\n");
-								scanf("%d", op);
+								scanf("%d", &op);
 							} while (op<1 || op>2);
+							
+							switch (op) {
+								
+								case 1:
+									menoramayor=fmenoramayorVall(FuenteVall);
+									for(i=0;i<27;i++) {
+										printf("%.2f \n",FuenteVall[i].pH);
+									}
+								break;
+								
+								case 2:
+									mayoramenor=fmayoramenorVall(FuenteVall);
+									for(i=0;i<27;i++) {
+										printf("%s: ", FuenteVall[i].fuente);
+										printf("%.2f \n",FuenteVall[i].pH);
+									}
+								break;
+							}
 						break;
 						
 						//Ordenar conductividad Vallecas
