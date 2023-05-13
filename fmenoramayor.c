@@ -115,7 +115,7 @@ int main () {
 		printf ("Introduzca una opcion: \n\n");
 		printf ("1 - Lavapies \n");
 		printf ("2 - Carabanchel \n");
-		printf ("3 - Vallecas \n");
+		printf ("3 - Vallecas \n\n");
 		scanf ("%d", &op);
 	} while (op<1 || op>3);
 	
@@ -123,28 +123,76 @@ int main () {
 		
 		//Lavapies
 		case 1:
-			menoramayor=fmenoramayorLav(FuenteLav);
-			for(i=0;i<25;i++) {
-				printf("%s: ", FuenteLav[i].fuente);
-				printf("%.2f \n",FuenteLav[i].pH);
+			do {
+				printf ("Introduzca una opcion: \n\n");
+				printf ("De menor a mayor \n");
+				printf ("De mayor a menor \n");
+				scanf("%d", &op);
+			} while (op<1 || op>2);
+			
+			switch (op) {
+				
+				case 1:
+					menoramayor=fmenoramayorLav(FuenteLav);
+					for(i=0;i<25;i++) {
+						printf("%s: ", FuenteLav[i].fuente);
+						printf("%.2f \n",FuenteLav[i].pH);
+					}
+				break;
+				
+				case 2:
+					
+				break;
 			}
 		break;
 		
 		//Carabanchel
 		case 2:
-			menoramayor=fmenoramayorCar(FuenteCar);
-			for(i=0;i<30;i++) {
-				printf("%s: ", FuenteCar[i].fuente);
-				printf("%.2f \n",FuenteCar[i].pH);
+			do {
+				printf ("Introduzca una opcion: \n\n");
+				printf ("De menor a mayor \n");
+				printf ("De mayor a menor \n");
+				scanf("%d", &op);
+			} while (op<1 || op>2);
+			
+			switch (op) {
+				
+				case 1:
+					menoramayor=fmenoramayorCar(FuenteCar);
+					for(i=0;i<30;i++) {
+						printf("%s: ", FuenteCar[i].fuente);
+						printf("%.2f \n",FuenteCar[i].pH);
+					}
+				break;
+				
+				case 2:
+					
+				break;
 			}
 		break;
-		
+			
 		//Vallecas
 		case 3:
-			menoramayor=fmenoramayorVall(FuenteVall);
-			for(i=0;i<27;i++) {
-				printf("%s: ", FuenteVall[i].fuente);
-				printf("%.2f \n",FuenteVall[i].pH);
+			do {
+				printf ("Introduzca una opcion: \n\n");
+				printf ("De menor a mayor \n");
+				printf ("De mayor a menor \n");
+				scanf("%d", &op);
+			} while (op<1 || op>2);
+			
+			switch (op) {
+			
+			case 1:
+				menoramayor=fmenoramayorVall(FuenteVall);
+				for(i=0;i<27;i++) {
+					printf("%s: ", FuenteVall[i].fuente);
+					printf("%.2f \n",FuenteVall[i].pH);
+				}
+			break;
+			
+			case 2:
+				
+			break;
 			}			
 		break;
 	}
@@ -198,7 +246,7 @@ float fmenoramayorVall (struct TDatosFuente FuenteVall[]) {
 	
 	for (i=0;i<27;i++) {
 		for (j=i+1;j<27;j++) {
-			if (FuenteVall[i].pH>FuenteVall[i].pH) {
+			if (FuenteVall[i].pH>FuenteVall[j].pH) {
 				aux=FuenteVall[i].pH;
 				FuenteVall[i].pH=FuenteVall[j].pH;
 				FuenteVall[j].pH=aux;
