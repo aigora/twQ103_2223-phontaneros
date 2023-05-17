@@ -26,21 +26,21 @@
 	float fmayoramenorCarpH(struct TDatosFuente[]);
 	float fmayoramenorVallpH(struct TDatosFuente[]);
 	
-	float fmenoramayorLavConductividad(struct TDatosFuente[]);
-	float fmenoramayorCarConductividad(struct TDatosFuente[]);
-	float fmenoramayorVallConductividad(struct TDatosFuente[]);
+	int fmenoramayorLavConductividad(struct TDatosFuente[]);
+	int fmenoramayorCarConductividad(struct TDatosFuente[]);
+	int fmenoramayorVallConductividad(struct TDatosFuente[]);
 	
-	float fmayoramenorLavConductividad(struct TDatosFuente[]);
-	float fmayoramenorCarConductividad(struct TDatosFuente[]);
-	float fmayoramenorVallConductividad(struct TDatosFuente[]);
+	int fmayoramenorLavConductividad(struct TDatosFuente[]);
+	int fmayoramenorCarConductividad(struct TDatosFuente[]);
+	int fmayoramenorVallConductividad(struct TDatosFuente[]);
 	
-	float fmenoramayorLavTurbidez(struct TDatosFuente[]);
-	float fmenoramayorCarTurbidez(struct TDatosFuente[]);
-	float fmenoramayorVallTurbidez(struct TDatosFuente[]);
+	int fmenoramayorLavTurbidez(struct TDatosFuente[]);
+	int fmenoramayorCarTurbidez(struct TDatosFuente[]);
+	int fmenoramayorVallTurbidez(struct TDatosFuente[]);
 	
-	float fmayoramenorLavTurbidez(struct TDatosFuente[]);
-	float fmayoramenorCarTurbidez(struct TDatosFuente[]);
-	float fmayoramenorVallTurbidez(struct TDatosFuente[]);
+	int fmayoramenorLavTurbidez(struct TDatosFuente[]);
+	int fmayoramenorCarTurbidez(struct TDatosFuente[]);
+	int fmayoramenorVallTurbidez(struct TDatosFuente[]);
 	
 	float frecorridoLav(struct TDatosFuente[]);
 	float frecorridoCar(struct TDatosFuente[]);
@@ -570,7 +570,7 @@ int main () {
 									menoramayor=fmenoramayorLavConductividad(FuenteLav);
 									for(i=0;i<25;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
-										printf("%.2f \n",FuenteLav[i].conductividad);
+										printf("%d \n",FuenteLav[i].conductividad);
 									}
 								break;
 								
@@ -578,7 +578,7 @@ int main () {
 									mayoramenor=fmayoramenorLavConductividad(FuenteLav);
 									for(i=0;i<25;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
-										printf("%.2f \n",FuenteLav[i].conductividad);
+										printf("%d\n",FuenteLav[i].conductividad);
 									}
 								break;
 							}
@@ -599,7 +599,7 @@ int main () {
 									menoramayor=fmenoramayorLavTurbidez(FuenteLav);
 									for(i=0;i<25;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
-										printf("%.2f \n",FuenteLav[i].turbidez);
+										printf("%d \n",FuenteLav[i].turbidez);
 									}
 								break;
 								
@@ -607,7 +607,7 @@ int main () {
 									mayoramenor=fmayoramenorLavTurbidez(FuenteLav);
 									for(i=0;i<25;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
-										printf("%.2f \n",FuenteLav[i].turbidez);
+										printf("%d \n",FuenteLav[i].turbidez);
 									}
 								break;
 							}
@@ -671,7 +671,7 @@ int main () {
 									menoramayor=fmenoramayorCarConductividad(FuenteCar);
 									for(i=0;i<30;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
-										printf("%.2f \n",FuenteCar[i].conductividad);
+										printf("%d \n",FuenteCar[i].conductividad);
 									}
 								break;
 								
@@ -679,7 +679,7 @@ int main () {
 									mayoramenor=fmayoramenorCarConductividad(FuenteCar);
 									for(i=0;i<30;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
-										printf("%.2f \n",FuenteCar[i].conductividad);
+										printf("%d \n",FuenteCar[i].conductividad);
 									}
 								break;
 							}
@@ -700,7 +700,7 @@ int main () {
 									menoramayor=fmenoramayorCarTurbidez(FuenteCar);
 									for(i=0;i<30;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
-										printf("%.2f \n",FuenteCar[i].turbidez);
+										printf("%d \n",FuenteCar[i].turbidez);
 									}
 								break;
 								
@@ -708,7 +708,7 @@ int main () {
 									mayoramenor=fmayoramenorCarTurbidez(FuenteCar);
 									for(i=0;i<30;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
-										printf("%.2f \n",FuenteCar[i].turbidez);
+										printf("%d \n",FuenteCar[i].turbidez);
 									}
 								break;
 							}
@@ -772,7 +772,7 @@ int main () {
 									menoramayor=fmenoramayorVallConductividad(FuenteVall);
 									for(i=0;i<27;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
-										printf("%.2f \n",FuenteVall[i].conductividad);
+										printf("%d \n",FuenteVall[i].conductividad);
 									}
 								break;
 								
@@ -780,7 +780,7 @@ int main () {
 									mayoramenor=fmayoramenorVallConductividad(FuenteVall);
 									for(i=0;i<27;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
-										printf("%.2f \n",FuenteVall[i].conductividad);
+										printf("%d \n",FuenteVall[i].conductividad);
 									}
 								break;
 							}
@@ -801,7 +801,7 @@ int main () {
 									menoramayor=fmenoramayorVallTurbidez(FuenteVall);
 									for(i=0;i<27;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
-										printf("%.2f \n",FuenteVall[i].turbidez);
+										printf("%d \n",FuenteVall[i].turbidez);
 									}
 								break;
 								
@@ -809,7 +809,7 @@ int main () {
 									mayoramenor=fmayoramenorVallTurbidez(FuenteVall);
 									for(i=0;i<27;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
-										printf("%.2f \n",FuenteVall[i].turbidez);
+										printf("%d \n",FuenteVall[i].turbidez);
 									}
 								break;
 							}
@@ -821,7 +821,10 @@ int main () {
 		
 		//Estadisticas
 		case 4:
-			
+			printf("\nSeleccione una opcion:\n");
+			printf("1 - De menor a mayor\n");
+			printf("2 - De mayor a menor\n\n");
+			scanf("%d", &op);
 		break;
 		
 		//Salir del programa
@@ -1036,10 +1039,10 @@ int main () {
 	//MENOR A MAYOR CONDUCTIVIDAD
 
 		//Carabanchel
-			float fmenoramayorCarConductividad (struct TDatosFuente FuenteCar[]) {
+			int fmenoramayorCarConductividad (struct TDatosFuente FuenteCar[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<30;i++) {
 				for (j=i+1;j<30;j++) {
@@ -1054,10 +1057,10 @@ int main () {
 			}
 		
 		//Lavapies
-			float fmenoramayorLavConductividad (struct TDatosFuente FuenteLav[]) {
+			int fmenoramayorLavConductividad (struct TDatosFuente FuenteLav[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<25;i++) {
 				for (j=i+1;j<25;j++) {
@@ -1072,10 +1075,10 @@ int main () {
 			}
 		
 		//Vallecas
-			float fmenoramayorVallConductividad (struct TDatosFuente FuenteVall[]) {
+			int fmenoramayorVallConductividad (struct TDatosFuente FuenteVall[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<27;i++) {
 				for (j=i+1;j<27;j++) {
@@ -1092,10 +1095,10 @@ int main () {
 	//MAYOR A MENOR CONDUCTIVIDAD
 	
 		//Carabanchel
-		float fmayoramenorCarConductividad (struct TDatosFuente FuenteCar[]) {
+		int fmayoramenorCarConductividad (struct TDatosFuente FuenteCar[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<30;i++) {
 				for (j=i+1;j<30;j++) {
@@ -1110,10 +1113,10 @@ int main () {
 		}
 		
 		//Lavapies
-		float fmayoramenorLavConductividad (struct TDatosFuente FuenteLav[]) {
+		int fmayoramenorLavConductividad (struct TDatosFuente FuenteLav[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<25;i++) {
 				for (j=i+1;j<25;j++) {
@@ -1128,10 +1131,10 @@ int main () {
 		}
 		
 		//Vallecas
-		float fmayoramenorVallConductividad (struct TDatosFuente FuenteVall[]) {
+		int fmayoramenorVallConductividad (struct TDatosFuente FuenteVall[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<27;i++) {
 				for (j=i+1;j<27;j++) {
@@ -1148,10 +1151,10 @@ int main () {
 	//MENOR A MAYOR TURBIDEZ
 	
 			//Carabanchel
-			float fmenoramayorCarTurbidez (struct TDatosFuente FuenteCar[]) {
+			int fmenoramayorCarTurbidez (struct TDatosFuente FuenteCar[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<30;i++) {
 				for (j=i+1;j<30;j++) {
@@ -1166,10 +1169,10 @@ int main () {
 			}
 		
 		//Lavapies
-			float fmenoramayorLavTurbidez (struct TDatosFuente FuenteLav[]) {
+			int fmenoramayorLavTurbidez (struct TDatosFuente FuenteLav[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<25;i++) {
 				for (j=i+1;j<25;j++) {
@@ -1184,10 +1187,10 @@ int main () {
 			}
 		
 		//Vallecas
-			float fmenoramayorVallTurbidez (struct TDatosFuente FuenteVall[]) {
+			int fmenoramayorVallTurbidez (struct TDatosFuente FuenteVall[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<27;i++) {
 				for (j=i+1;j<27;j++) {
@@ -1204,10 +1207,10 @@ int main () {
 	//MAYOR A MENOR TURBIDEZ
 	
 		//Carabanchel
-		float fmayoramenorCarTurbidez (struct TDatosFuente FuenteCar[]) {
+		int fmayoramenorCarTurbidez (struct TDatosFuente FuenteCar[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<30;i++) {
 				for (j=i+1;j<30;j++) {
@@ -1222,10 +1225,10 @@ int main () {
 		}
 		
 		//Lavapies
-		float fmayoramenorLavTurbidez (struct TDatosFuente FuenteLav[]) {
+		int fmayoramenorLavTurbidez (struct TDatosFuente FuenteLav[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<25;i++) {
 				for (j=i+1;j<25;j++) {
@@ -1240,10 +1243,10 @@ int main () {
 		}
 		
 		//Vallecas
-		float fmayoramenorVallTurbidez (struct TDatosFuente FuenteVall[]) {
+		int fmayoramenorVallTurbidez (struct TDatosFuente FuenteVall[]) {
 	
 			int i,j;
-			float aux;
+			int aux;
 	
 			for (i=0;i<27;i++) {
 				for (j=i+1;j<27;j++) {
