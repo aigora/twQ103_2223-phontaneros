@@ -45,6 +45,11 @@
 	float frecorridoLav(struct TDatosFuente[]);
 	float frecorridoCar(struct TDatosFuente[]);
 	float frecorridoVall(struct TDatosFuente[]);
+	
+	float fmodaLav(struct TDatosFuente[]);
+    float fmodaCar(struct TDatosFuente[]);
+    float fmodaVall(struct TDatosFuente[]);
+
 
 	void fcompararpHCar(struct TDatosFuente[], int);
 	void fcompararpHLav(struct TDatosFuente[]); 
@@ -58,7 +63,7 @@ int main () {
 	int op;
 	int NumFuentesCar=0, NumFuentesLav=0, NumFuentesVall=0;
 	int potable;
-	int i, j, n;
+	int i = 0, j, n;
 	float pH;
 	int conductividad, turbidez, coliformes;
 	char fuente[500];
@@ -69,7 +74,8 @@ int main () {
 	struct TDatosFuente FuenteVall[500];
 	float menoramayor;
 	float mayoramenor;
-	
+	float valor_repetidoCar, valor_repetidoLav, valor_repetidoVall;
+
 //Abrir ficheros y escanearlos	
 
 	//Abrir Lavapies
@@ -823,13 +829,40 @@ int main () {
 		case 4:
 			printf("\nSeleccione una opcion:\n");
 			printf("1 - De menor a mayor\n");
-			printf("2 - De mayor a menor\n\n");
+			printf("2 - De mayor a menor\n");
+			printf("3 - Moda\n\n");
 			scanf("%d", &op);
+			
+			switch (op){
+				case 1: 
+				
+				case 2:
+					
+				case 3:
+				do {
+					printf ("Elija un barrio: \n");
+					printf ("1 - Carabanchel\n");
+					printf ("2 - Lavapies \n");
+					printf ("3 - Vallecas \n");
+					scanf ("%d", &op); 
+						} while (op<1 || op>3);
+				
+				switch (op){
+					
+					case 1:
+				
+					case 2:
+						
+					case 3:		
+					valor_repetidoCar = fmodaCar(FuenteCar);
+                	printf("El pH que mas veces se repite de Carabanchel es el: %.2f \n", valor_repetidoCar);
+				}
+			}
 		break;
 		
 		//Salir del programa
 		case 5: 
-			printf ("\nSaliendo del programa...\n");
+     	printf ("\nSaliendo del programa...\n");
 		break;
 	}
 	
@@ -1334,6 +1367,32 @@ int main () {
 			
 			return recorr;
 			}	
+
+//MODA
+
+    //CARABANCHEL
+    
+float fmodaCar(struct TDatosFuente FuenteCar[]) {
+    int i, j, cont2 = 0, cont1 = 0;
+    float aux1;
+
+    for (i = 0; i < 30; i++) {
+        for (j = 0; j < 30; j++) {
+            if (FuenteCar[i].pH == FuenteCar[j].pH && i != j) {
+                cont1++;
+            }
+        }
+
+        if (cont1 > cont2) {
+            cont2 = cont1;
+            aux1 = FuenteCar[i].pH;
+        }
+
+        cont1 = 0;
+    }
+
+    return aux1;  
+}
 				
 //COMPARAR DATOS
 	//MISMO BARRIO
@@ -1347,14 +1406,14 @@ int main () {
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
 				scanf ("%s", b);
-				for (i=0; i<NumFuentesCar; i++) {
+				for (i=0; i<30; i++) {
 		
 					if (FuenteCar[i].fuente==a) {
 						ph1=FuenteCar[i].pH;
 					//	printf("Ph1=%f \n", FuenteCar[i].pH); 
 					}
 				}
-				for (j=0; j<NumFuentesCar; j++) {
+				for (j=0; j<30; j++) {
 					if (FuenteCar[j].fuente==b) {
 						ph2=FuenteCar[j].pH;
 					}
