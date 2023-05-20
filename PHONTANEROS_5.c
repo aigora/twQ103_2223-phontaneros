@@ -56,6 +56,10 @@
 	void fcompararpHLav(struct TDatosFuente[], int); 
 	void fcompararpHVall(struct TDatosFuente[], int);
 	
+	void fcompararpHLavCar(struct TDatosFuente[], int, struct TDatosFuente[], int);
+	void fcompararpHLavVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
+	void fcompararpHCarVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
+	
 	void comprobarAgua(struct TDatosFuente[]);
 	
 		
@@ -383,7 +387,7 @@ int main () {
 						printf ("4 - Comparar pH de 2 fuentes de un mismo barrio \n");
 						printf ("5 - Comparar pH de 2 fuentes de barrios diferentes \n");
 						scanf ("%d", &op); 
-					} while (op<1 || op>4);
+					} while (op<1 || op>5);
 					
 					switch (op) {
 						
@@ -489,11 +493,32 @@ int main () {
 								case 3: 
 									fcompararpHLav(FuenteVall, NumFuentesVall); 
 								break;
-							//	case(3): 
-								//	fcompararpHVall (FuenteVall); 
-							//	break; 
 							}
 						break;
+						case 5:
+							do {
+								printf ("Elija entre dos barrios: \n");
+								printf ("1 - Lavapies<->Carabanchel\n");
+								printf ("2 - Lavapies<->Vallecas \n");
+								printf ("3 - Carabanchel<->Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									fcompararpHLavCar(FuenteLav, NumFuentesLav, FuenteCar, NumFuentesCar);	
+								break;
+									
+								case 2: 
+									fcompararpHLavVall(FuenteLav, NumFuentesLav, FuenteVall, NumFuentesVall); 
+								break; 
+								
+								case 3: 
+									fcompararpHCarVall(FuenteCar, NumFuentesCar, FuenteVall, NumFuentesVall); 
+								break;
+							}
+						break;		
 					}
 				break;
 				
@@ -1551,7 +1576,114 @@ int main () {
 			
 			
 
-		//DIFERENTE BARRIO
+//DIFERENTE BARRIO
+		//pH
+			//lAVAPIES-CARABANCHEL
+			void fcompararpHLavCar(struct TDatosFuente FuenteLav[], int NumFuentesLav, struct TDatosFuente FuenteCar[], int NumFuentesCar) {
+			    int i, j, resultado;
+			    char a[40], b[40];
+			    float ph1 = 0, ph2 = 0;
+			    
+			    printf("Introduce el nombre de la fuente correspondiente a Lavapies. Por ejemplo, Fuente_4.\n");
+			    scanf("%s", a);
+			    printf("Introduce el nombre de la fuente correspondiente a Carabanchel. Por ejemplo, Fuente_5.\n");
+			    scanf("%s", b);
+			    
+			    for (i = 0; i < NumFuentesLav; i++) {
+			        resultado = strcmp(a, FuenteLav[i].fuente);
+			        if (resultado == 0) {
+			            ph1 = FuenteLav[i].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Lavapies
+			        }
+			    }
+			    
+			    for (j = 0; j < NumFuentesCar; j++) {
+			        resultado = strcmp(b, FuenteCar[j].fuente);
+			        if (resultado == 0) {
+			            ph2 = FuenteCar[j].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Carabanchel
+			        }
+			    }
+			    
+			    if (ph1 < ph2) {
+			        printf("El pH de la %s: %.2f de Lavapies es menor que el de la %s: %.2f de Carabanchel\n", a, ph1, b, ph2);
+			    } else if (ph1 > ph2) {
+			        printf("El pH de la %s: %.2f de Lavapies es mayor que el de la %s: %.2f de Carabanchel\n", a, ph1, b, ph2);
+			    } else if (ph1 == ph2) {
+			        printf("La %s: %.2f de Lavapies y la %s: %.2f de Carabanchel tienen el mismo pH\n", a, ph1, b, ph2);
+			    }
+}
+			//LAVAPIES-VALLECAS
+			void fcompararpHLavVall(struct TDatosFuente FuenteLav[], int NumFuentesLav, struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+			    int i, j, resultado;
+			    char a[40], b[40];
+			    float ph1 = 0, ph2 = 0;
+	
+			    printf("Introduce el nombre de la fuente correspondiente a Lavapies. Por ejemplo, Fuente_4.\n");
+			    scanf("%s", a);
+			    printf("Introduce el nombre de la fuente correspondiente a Vallecas. Por ejemplo, Fuente_5.\n");
+			    scanf("%s", b);
+			    
+			    for (i = 0; i < NumFuentesLav; i++) {
+			        resultado = strcmp(a, FuenteLav[i].fuente);
+			        if (resultado == 0) {
+			            ph1 = FuenteLav[i].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Lavapies
+			        }
+			    }
+			    
+			    for (j = 0; j < NumFuentesVall; j++) {
+			        resultado = strcmp(b, FuenteVall[j].fuente);
+			        if (resultado == 0) {
+			            ph2 = FuenteVall[j].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Carabanchel
+			        }
+			    }
+			    
+			    if (ph1 < ph2) {
+			        printf("El pH de la %s: %.2f de Lavapies es menor que el de la %s: %.2f de Vallecas\n", a, ph1, b, ph2);
+			    } else if (ph1 > ph2) {
+			        printf("El pH de la %s: %.2f de Lavapies es mayor que el de la %s: %.2f de Vallecas\n", a, ph1, b, ph2);
+			    } else if (ph1 == ph2) {
+			        printf("La %s: %.2f de Lavapies y la %s: %.2f de Vallecas tienen el mismo pH\n", a, ph1, b, ph2);
+			    }
+}
+			
+			//CARABANCHEL-VALLECAS
+			void fcompararpHCarVall(struct TDatosFuente FuenteCar[], int NumFuentesCar, struct TDatosFuente FuenteVall[], int NumFuentesVall){
+			    int i, j, resultado;
+			    char a[40], b[40];
+			    float ph1 = 0, ph2 = 0;
+	
+			    printf("Introduce el nombre de la fuente correspondiente a Carabanchel. Por ejemplo, Fuente_4.\n");
+			    scanf("%s", a);
+			    printf("Introduce el nombre de la fuente correspondiente a Vallecas. Por ejemplo, Fuente_5.\n");
+			    scanf("%s", b);
+			    
+			    for (i = 0; i < NumFuentesCar; i++) {
+			        resultado = strcmp(a, FuenteCar[i].fuente);
+			        if (resultado == 0) {
+			            ph1 = FuenteCar[i].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Lavapies
+			        }
+			    }
+			    
+			    for (j = 0; j < NumFuentesVall; j++) {
+			        resultado = strcmp(b, FuenteVall[j].fuente);
+			        if (resultado == 0) {
+			            ph2 = FuenteVall[j].pH;
+			            break;  // Salir del bucle una vez se encuentra el pH de la fuente de Carabanchel
+			        }
+			    }
+			    
+			    if (ph1 < ph2) {
+			        printf("El pH de la %s: %.2f de Carabanchel es menor que el de la %s: %.2f de Vallecas\n", a, ph1, b, ph2);
+			    } else if (ph1 > ph2) {
+			        printf("El pH de la %s: %.2f de Carabanchel es mayor que el de la %s: %.2f de Vallecas\n", a, ph1, b, ph2);
+			    } else if (ph1 == ph2) {
+			        printf("La %s: %.2f de Carabanchel y la %s: %.2f de Vallecas tienen el mismo pH\n", a, ph1, b, ph2);
+			    }
+}
 		
 	
 	//ComprobarAgua
