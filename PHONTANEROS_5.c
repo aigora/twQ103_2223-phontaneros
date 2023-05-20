@@ -881,16 +881,18 @@ int main () {
 				switch (op){
 					
 					case 1:
-					valor_repetidoVall = fmodaVall(FuenteVall);
-	                printf("El pH que mas veces se repite de Vallecas es el:%.2f \n", valor_repetidoVall);
+					valor_repetidoCar = fmodaCar(FuenteCar);
+	                printf("El pH que mas veces se repite de Carabanchel es el:%.2f \n", valor_repetidoCar);
+	                break;
 				
 					case 2:
 					valor_repetidoLav = fmodaLav(FuenteLav);
-                    printf("El pH que mas veces se repite de Lavapiés es el: %.2f \n", valor_repetidoLav);
-						
+                    printf("El pH que mas veces se repite de Lavapies es el: %.2f \n", valor_repetidoLav);
+					break;
 					case 3:		
-					valor_repetidoCar = fmodaCar(FuenteCar);
-                	printf("El pH que mas veces se repite de Carabanchel es el: %.2f \n", valor_repetidoCar);
+					valor_repetidoVall = fmodaVall(FuenteVall);
+                	printf("El pH que mas veces se repite de Vallecas es el: %.2f \n", valor_repetidoVall);
+                	break;
 				}
 			}
 		break;
