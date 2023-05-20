@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 	
 //Declaracion de structs
 	struct TDatosFuente {
@@ -52,7 +53,8 @@
 
 
 	void fcompararpHCar(struct TDatosFuente[], int);
-	void fcompararpHLav(struct TDatosFuente[]); 
+	void fcompararpHLav(struct TDatosFuente[], int); 
+	void fcompararpHVall(struct TDatosFuente[], int);
 	
 	void comprobarAgua(struct TDatosFuente[]);
 	
@@ -481,8 +483,12 @@ int main () {
 								break;
 									
 								case 2: 
-									fcompararpHLav(FuenteLav); 
+									fcompararpHLav(FuenteLav, NumFuentesLav); 
 								break; 
+								
+								case 3: 
+									fcompararpHLav(FuenteVall, NumFuentesVall); 
+								break;
 							//	case(3): 
 								//	fcompararpHVall (FuenteVall); 
 							//	break; 
@@ -1399,58 +1405,101 @@ float fmodaCar(struct TDatosFuente FuenteCar[]) {
 		//pH
 			//Carabanchel
 			void fcompararpHCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
-				int i,j;
+				int i,j,resultado;
 				char a[40], b[40]; //esto solucionaba el error que nos salia esta tarde -ale
 				float ph1, ph2;
 				printf ("Introduce el nombre de la primera fuente a comparar. Por ejemplo, Fuente_4.\n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
 				scanf ("%s", b);
-				for (i=0; i<30; i++) {
-		
-					if (FuenteCar[i].fuente==a) {
-						ph1=FuenteCar[i].pH;
-					//	printf("Ph1=%f \n", FuenteCar[i].pH); 
+				for (i=0; i<NumFuentesCar; i++) {
+					resultado = strcmp(a, FuenteCar[i].fuente);
+					if (resultado == 0){
+					ph1=FuenteCar[i].pH;
 					}
 				}
-				for (j=0; j<30; j++) {
-					if (FuenteCar[j].fuente==b) {
-						ph2=FuenteCar[j].pH;
+				
+				for (j=0; j<NumFuentesCar; j++) {
+					resultado = strcmp(b, FuenteCar[j].fuente);
+					if (resultado == 0){
+					ph2=FuenteCar[j].pH;
 					}
 				}
-				if (ph1<ph2) { //el error es que la funcion lee los signos al reves, si ph es menor te va a decir que es mayor, y viceversa -ale
-					printf ("El pH de la %s es menor que el de la %s", a, b);
+				if (ph1<ph2) {
+					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
 				} else if (ph1>ph2) {
-					printf ("El pH de la %s es mayor que el de la %s", a, b);
+					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
 				} else if (ph1==ph2) {
-					printf ("La %s y la %s tienen el mismo pH", a, b);
+					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
 				}
 			}
 			
 			//Lavapiés
-			void fcompararpHLav(struct TDatosFuente FuenteLav[]) {
-				int  n, i; 
+			void fcompararpHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+				int i, j, resultado; 
 				char a[40], b[40]; 
 				float ph1, ph2; 
 				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
-				scanf ("%s", b);
-				for (i=0; i<25; i++) {
-					if (FuenteLav[i].fuente==a) {
-						ph1=FuenteLav[i].pH; 
-					} else if (FuenteLav[i].fuente==b) {
-						ph2=FuenteLav[i].pH; 
+				scanf("%s",b);
+				for (i=0; i<NumFuentesLav; i++) {
+					resultado = strcmp(a, FuenteLav[i].fuente);
+					if (resultado == 0){
+					ph1=FuenteLav[i].pH;
 					}
 				}
+				
+				for (j=0; j<NumFuentesLav; j++) {
+					resultado = strcmp(b, FuenteLav[j].fuente);
+					if (resultado == 0){
+					ph2=FuenteLav[j].pH;
+					}
+				}
+				
 				if (ph1<ph2) {
-					printf ("El pH de la %s es menor que el de la %s \n", a, b);
+					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
 				} else if (ph1>ph2) {
-					printf ("El pH de la %s es mayor que el de la %s \n", a, b);
+					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
 				} else if (ph1==ph2) {
-					printf ("La %s y la %s tienen el mismo pH", a, b);
+					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
 				}
 			}
+			
+			//Vallecas
+			void fcompararpHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+				int i, j, resultado; 
+				char a[40], b[40]; 
+				float ph1, ph2; 
+				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
+				scanf ("%s", a);
+				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
+				scanf("%s",b);
+				for (i=0; i<NumFuentesVall; i++) {
+					resultado = strcmp(a, FuenteVall[i].fuente);
+					if (resultado == 0){
+					ph1=FuenteVall[i].pH;
+					}
+				}
+				
+				for (j=0; j<NumFuentesVall; j++) {
+					resultado = strcmp(b, FuenteVall[j].fuente);
+					if (resultado == 0){
+					ph2=FuenteVall[j].pH;
+					}
+				}
+				
+				if (ph1<ph2) {
+					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
+				} else if (ph1>ph2) {
+					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
+				} else if (ph1==ph2) {
+					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				}
+			}
+			
+			
+
 		//DIFERENTE BARRIO
 		
 	
