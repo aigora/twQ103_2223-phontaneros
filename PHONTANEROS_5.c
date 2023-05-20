@@ -856,8 +856,12 @@ int main () {
 				switch (op){
 					
 					case 1:
+					valor_repetidoVall = fmodaVall(FuenteVall);
+	                printf("El pH que mas veces se repite de Vallecas es el:%.2f \n", valor_repetidoVall);
 				
 					case 2:
+					valor_repetidoLav = fmodaLav(FuenteLav);
+                    printf("El pH que mas veces se repite de Lavapiés es el: %.2f \n", valor_repetidoLav);
 						
 					case 3:		
 					valor_repetidoCar = fmodaCar(FuenteCar);
@@ -1299,7 +1303,7 @@ int main () {
 		return aux;
 		}
 		
-//RECORRIDO
+    //RECORRIDO
 	
 		//Carabanchel
 			float frecorridoCar (struct TDatosFuente FuenteCar[]) {
@@ -1374,15 +1378,14 @@ int main () {
 			return recorr;
 			}	
 
-//MODA
+    //MODA
 
-    //CARABANCHEL
-    
-float fmodaCar(struct TDatosFuente FuenteCar[]) {
-    int i, j, cont2 = 0, cont1 = 0;
-    float aux1;
+       //Carabanchel 
+        float fmodaCar(struct TDatosFuente FuenteCar[]) {
+        int i, j, cont2 = 0, cont1 = 0;
+        float aux1;
 
-    for (i = 0; i < 30; i++) {
+        for (i = 0; i < 30; i++) {
         for (j = 0; j < 30; j++) {
             if (FuenteCar[i].pH == FuenteCar[j].pH && i != j) {
                 cont1++;
@@ -1394,12 +1397,60 @@ float fmodaCar(struct TDatosFuente FuenteCar[]) {
             aux1 = FuenteCar[i].pH;
         }
 
+           cont1 = 0;
+        }
+
+    return aux1;  
+        }
+		
+		//Lavapiés
+        float fmodaLav(struct TDatosFuente FuenteLav[]) {
+        int i, j, cont2 = 0, cont1 = 0;
+        float aux2;
+
+        for (i = 0; i < 25; i++) {
+        for (j = 0; j < 25; j++) {
+            if (FuenteLav[i].pH == FuenteLav[j].pH && i != j) {
+                cont1++;
+            }
+        }
+
+        if (cont1 > cont2) {
+            cont2 = cont1;
+            aux2 = FuenteLav[i].pH;
+        }
+
         cont1 = 0;
     }
 
-    return aux1;  
+    return aux2;  
 }
-				
+
+    //Vallecas
+    float fmodaVall(struct TDatosFuente FuenteVall[]) {
+    int i, j, cont2 = 0, cont1 = 0;
+    float aux3;
+
+    for (i = 0; i < 30; i++) {
+        for (j = 0; j < 30; j++) {
+            if (FuenteVall[i].pH == FuenteVall[j].pH && i != j) {
+                cont1++;
+            }
+        }
+
+        if (cont1 > cont2) {
+            cont2 = cont1;
+            aux3 = FuenteVall[i].pH;
+        }
+
+        cont1 = 0;
+    }
+
+    return aux3;  
+}
+
+	
+			
 //COMPARAR DATOS
 	//MISMO BARRIO
 		//pH
