@@ -10,13 +10,13 @@ struct TDatosFuente {
 };
 
 int main(){
-	float fmediapHCar(struct TDatosFuente[]);
-	float fmediapHLav(struct TDatosFuente[]);
-	float fmediapHVall(struct TDatosFuente[]);
+	float fmediapHCar(struct TDatosFuente[], int);
+	float fmediapHLav(struct TDatosFuente[], int);
+	float fmediapHVall(struct TDatosFuente[], int);
 	
-	float fdespHCar(struct TDatosFuente[], float);
-	float fdespHLav(struct TDatosFuente[], float);
-	float fdespHVall(struct TDatosFuente[], float);
+	float fdespHCar(struct TDatosFuente[], float, int);
+	float fdespHLav(struct TDatosFuente[], float, int);
+	float fdespHVall(struct TDatosFuente[], float, int);
 	
 	
 	float pH, mediapHCar, mediapHLav, mediapHVall, despHCar, despHLav, despHVall;
@@ -94,15 +94,16 @@ int main(){
 	
 	fclose (fVallecas);
 	NumFuentesVall = i;
-	mediapHCar = fmediapHCar(FuenteCar);
-	mediapHLav = fmediapHLav(FuenteLav);
-	mediapHVall = fmediapHVall(FuenteVall);
+	mediapHCar = fmediapHCar(FuenteCar, NumFuentesCar);
+	mediapHLav = fmediapHLav(FuenteLav, NumFuentesLav);
+	mediapHVall = fmediapHVall(FuenteVall, NumFuentesVall);
 	
-	despHCar = fdespHCar(FuenteCar, mediapHCar);
-	despHLav = fdespHLav(FuenteLav, mediapHLav);
-	despHVall = fdespHVall(FuenteCar, mediapHVall);
+	despHCar = fdespHCar(FuenteCar, mediapHCar, NumFuentesCar);
+	despHLav = fdespHLav(FuenteLav, mediapHLav, NumFuentesLav);
+	despHVall = fdespHVall(FuenteCar, mediapHVall, NumFuentesVall);
 	
-	printf("La de media de pH de Carabanchel es: %.2f\n", mediapHCar);
+	
+	printf("La de media de pH de Carabanchel es: %.2f\n", fdespHCar);
 	printf("La de media de pH de Lavapies es: %.2f\n", mediapHLav);
 	printf("La de media de pH de Vallecas es: %.2f\n", mediapHVall);
 	
@@ -115,62 +116,62 @@ int main(){
 
 //Falta buscar la forma de meter el numero de fuentes de cada sitio en las funciones sin meter el numero, y asi solo hacer una funcion para media
 
-float fmediapHCar(struct TDatosFuente FuenteCar[]){
-	int i, nFuen = 30;
+float fmediapHCar(struct TDatosFuente FuenteCar[], int NumFuentesCar){
+	int i;
 	float mediapH = 0, mediapHCar;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesCar; i++){
 		mediapH += FuenteCar[i].pH;
 	}
 	mediapHCar = mediapH / 30;
 	return mediapHCar;
 }
 
-float fmediapHLav(struct TDatosFuente FuenteLav[]){
-	int i, nFuen = 25;
+float fmediapHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav){
+	int i;
 	float mediapH = 0, mediapHLav;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesLav; i++){
 		mediapH += FuenteLav[i].pH;
 	}
 	mediapHLav = mediapH / 25;
 	return mediapHLav;
 }
 
-float fmediapHVall(struct TDatosFuente FuenteVall[]){
-	int i, nFuen = 27;
+float fmediapHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall){
+	int i;
 	float mediapH = 0, mediapHVall;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesVall; i++){
 		mediapH += FuenteVall[i].pH;
 	}
 	mediapHVall = mediapH / 27;
 	return mediapHVall;
 }
 
-float fdespHCar(struct TDatosFuente FuenteCar[], float mediapHCar){
-	int i, nFuen = 30;
+float fdespHCar(struct TDatosFuente FuenteCar[], float mediapHCar, int NumFuentesCar){
+	int i;
 	float sumdespH = 0, despHCar=0;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesCar; i++){
 		sumdespH += (FuenteCar[i].pH - mediapHCar)*(FuenteCar[i].pH - mediapHCar);
 	}
-	despHCar = sqrt(sumdespH/nFuen);
+	despHCar = sqrt(sumdespH/NumFuentesCar);
 	return despHCar;
 }
 
-float fdespHLav(struct TDatosFuente FuenteLav[], float mediapHLav){
-	int i, nFuen = 25;
+float fdespHLav(struct TDatosFuente FuenteLav[], float mediapHLav, int NumFuentesLav){
+	int i;
 	float sumdespH = 0, despHLav=0;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesLav; i++){
 		sumdespH += (FuenteLav[i].pH - mediapHLav)*(FuenteLav[i].pH - mediapHLav);
 	}
-	despHLav = sqrt(sumdespH/nFuen);
+	despHLav = sqrt(sumdespH/NumFuentesLav);
 	return despHLav;
 }
 
-float fdespHVall(struct TDatosFuente FuenteVall[], float mediapHVall){
-	int i, nFuen = 27;
+float fdespHVall(struct TDatosFuente FuenteVall[], float mediapHVall, int NumFuentesVall){
+	int i;
 	float sumdespH = 0, despHVall=0;
-	for(i=0; i<nFuen; i++){
+	for(i=0; i<NumFuentesVall; i++){
 		sumdespH += (FuenteVall[i].pH - mediapHVall)*(FuenteVall[i].pH - mediapHVall);
 	}
-	despHVall = sqrt(sumdespH/nFuen);
+	despHVall = sqrt(sumdespH/NumFuentesVall);
 	return despHVall;
 }
