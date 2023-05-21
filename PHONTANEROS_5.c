@@ -194,6 +194,8 @@ int main () {
 	NumFuentesVall = i;
 
 	//SELECCIONAR PROGRAMA
+	do {
+	
 	printf ("\t\t\t\t==================== PHONTANEROS ==================== \n\n");
 	do {
 	printf ("Introduzca una opcion: \n\n");
@@ -201,12 +203,12 @@ int main () {
 	printf ("2 - Comparar datos \n");
 	printf ("3 - Ordenar datos \n");
 	printf ("4 - Estadisticas \n");
-	printf ("5 - Salir del programa \n\n");
-	scanf ("%d", &op);
-	} while (op<1 || op>5);
+	printf ("0 - Salir del programa \n\n");
+	scanf ("%d", &opcion);
+	} while (opcion<0 || opcion>4);
 	
 	//PROGRAMA PRINCIPAL
-	switch (op) {
+	switch (opcion) {
 		
 		//Buscar datos
 		case 1: 
@@ -215,9 +217,10 @@ int main () {
 				printf ("\nSeleccione una opcion: \n");
 				printf ("1 - Ver ficheros \n");
 				printf ("2 - Buscar una fuente \n");
-				printf ("3 - Buscar un dato \n\n");
+				printf ("3 - Buscar un dato \n");
+				printf("0 - Volver al menu \n\n");
 				scanf("%d", &op);
-			} while (op<1 || op>3);
+			} while (op<0 || op>3);
 			
 			switch (op) {
 				
@@ -292,10 +295,6 @@ int main () {
 						break;
 					}
 				break;
-				
-				case 0:
-					
-				break;
 			}
 		break;
 		
@@ -307,9 +306,10 @@ int main () {
 				printf ("1 - pH \n");
 				printf ("2 - Conductividad \n");
 				printf ("3 - Turbidez \n");
-				printf ("4 - Coliformes \n\n");
+				printf ("4 - Coliformes \n");
+				printf("0 - Volver al menu \n\n");
 				scanf ("%d", &op); 
-			} while (op<1 || op>4);
+			} while (op<0 || op>4);
 			
 			switch (op) {
 			
@@ -639,9 +639,10 @@ int main () {
 				printf ("\nSeleccione una opcion: \n");
 				printf ("1 - Lavapies \n");
 				printf ("2 - Carabanchel \n");
-				printf ("3 - Vallecas \n\n");
+				printf ("3 - Vallecas \n");
+				printf("0 - Volver al menu \n\n");
 				scanf ("%d", &op);
-			} while (op<1 || op>3);
+			} while (op<0 || op>3);
 			
 			switch (op) {
 				
@@ -958,9 +959,10 @@ int main () {
 				printf("1 - Potabilidad \n");
 				printf("2 - Media \n");
 				printf("3 - Moda \n");
-				printf("4 - Desviacion \n\n");
+				printf("4 - Desviacion \n");
+				printf("0 - Volver al menu \n\n");
 				scanf("%d", &op);
-			} while (op<1 || op>4);
+			} while (op<0 || op>4);
 			
 			switch (op){
 				
@@ -1202,10 +1204,11 @@ int main () {
 		break;
 		
 		//Salir del programa
-		case 5: 
+		case 0: 
      	printf ("\nSaliendo del programa...\n");
 		break;
 	}
+	} while (opcion != 0);
 	
 	//Cerrar ficheros
 	fclose (fLavapies);
