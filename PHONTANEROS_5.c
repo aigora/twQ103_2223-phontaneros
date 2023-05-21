@@ -153,7 +153,7 @@ int main () {
 	NumFuentesVall = i;
 
 	//SELECCIONAR PROGRAMA
-	printf ("\t\t\t\t=================== PHONTANEROS =================== \n\n");
+	printf ("\t\t\t\t==================== PHONTANEROS ==================== \n\n");
 	do {
 	printf ("Introduzca una opcion: \n\n");
 	printf ("1 - Buscar datos \n");
@@ -576,7 +576,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavpH(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%.2f \n",FuenteLav[i].pH);
 									}
@@ -584,7 +584,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavpH(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%.2f \n",FuenteLav[i].pH);
 									}
@@ -605,7 +605,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavConductividad(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].conductividad);
 									}
@@ -613,7 +613,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavConductividad(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d\n",FuenteLav[i].conductividad);
 									}
@@ -634,7 +634,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavTurbidez(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].turbidez);
 									}
@@ -642,7 +642,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavTurbidez(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].turbidez);
 									}
@@ -677,7 +677,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarpH(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%.2f \n",FuenteCar[i].pH);
 									}
@@ -685,7 +685,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarpH(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%.2f \n",FuenteCar[i].pH);
 									}
@@ -706,7 +706,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarConductividad(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].conductividad);
 									}
@@ -714,7 +714,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarConductividad(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].conductividad);
 									}
@@ -735,7 +735,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarTurbidez(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].turbidez);
 									}
@@ -743,7 +743,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarTurbidez(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].turbidez);
 									}
@@ -778,7 +778,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallpH(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%.2f \n",FuenteVall[i].pH);
 									}
@@ -786,7 +786,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallpH(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%.2f \n",FuenteVall[i].pH);
 									}
@@ -807,7 +807,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallConductividad(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].conductividad);
 									}
@@ -815,7 +815,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallConductividad(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].conductividad);
 									}
@@ -836,7 +836,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallTurbidez(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].turbidez);
 									}
@@ -844,7 +844,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallTurbidez(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].turbidez);
 									}
@@ -858,17 +858,133 @@ int main () {
 		
 		//Estadisticas
 		case 4:
-			printf("\nSeleccione una opcion:\n");
-			printf("1 - De menor a mayor\n");
-			printf("2 - De mayor a menor\n");
-			printf("3 - Moda\n\n");
+			printf("\nSeleccione una opcion: \n\n");
+			printf("1 - Potabilidad \n");
+			printf("2 - Media \n");
+			printf("3 - Moda \n\n");
 			scanf("%d", &op);
 			
 			switch (op){
-				case 1: 
 				
+				//Potabilidad
+				case 1: 
+					do {
+						printf ("Introduzca una opcion: \n\n");
+						printf ("1 - Carabanchel \n");
+						printf ("2 - Lavapies \n");
+						printf ("3 - Vallecas \n");
+						scanf ("%d", &op);
+					} while (op<1 || op>3);
+	
+				switch (op) {
+					
+					//Carabanchel
+					case 1:
+						do {
+			    			printf("Introduzca una fuente:\n\n");
+			    			scanf("%d", &i);
+							i=i-1;
+						} while (i<1 || i>NumFuentesCar);
+				
+			    		if (FuenteCar[i].pH < 6.5 || FuenteCar[i].pH > 8) {
+			       			printf("\nLa fuente %s tiene mal ph\n", FuenteCar[i].fuente);
+			    		} else {
+			       			printf("\nLa fuente %s tiene buen ph\n", FuenteCar[i].fuente);
+						}
+			
+			   			if (FuenteCar[i].turbidez > 5) {
+			   				printf("El agua de la fuente %s es turbia\n", FuenteCar[i].fuente);
+			    		} else {
+			        		printf("El agua de la fuente %s no es turbia\n", FuenteCar[i].fuente);
+			    		}
+			
+			    		if (FuenteCar[i].coliformes == 1) {
+			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteCar[i].fuente);
+			    		} else {
+			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteCar[i].fuente);
+			   		 	}
+			
+			   			if (FuenteCar[i].coliformes == 0 && FuenteCar[i].turbidez <= 5 && FuenteCar[i].pH >= 6.5 && FuenteCar[i].pH <= 8) {
+			        		printf("El agua es potable\n");
+			    		} else {
+			    			printf("El agua no es potable\n");
+			    		}
+					break;
+					
+					//Lavapies
+					case 2:
+						do {
+			    			printf("Introduzca una fuente:\n\n");
+			    			scanf("%d", &i);
+							i=i-1;
+						} while (i<1 || i>NumFuentesLav);
+				
+			    		if (FuenteLav[i].pH < 6.5 || FuenteLav[i].pH > 8) {
+			       			printf("\nLa fuente %s tiene mal ph\n", FuenteLav[i].fuente);
+			    		} else {
+			       			printf("\nLa fuente %s tiene buen ph\n", FuenteLav[i].fuente);
+						}
+			
+			   			if (FuenteLav[i].turbidez > 5) {
+			   				printf("El agua de la fuente %s es turbia\n", FuenteLav[i].fuente);
+			    		} else {
+			        		printf("El agua de la fuente %s no es turbia\n", FuenteLav[i].fuente);
+			    		}
+			
+			    		if (FuenteLav[i].coliformes == 1) {
+			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteLav[i].fuente);
+			    		} else {
+			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteLav[i].fuente);
+			   		 	}
+			
+			   			if (FuenteLav[i].coliformes == 0 && FuenteLav[i].turbidez <= 5 && FuenteLav[i].pH >= 6.5 && FuenteLav[i].pH <= 8) {
+			        		printf("El agua es potable\n");
+			    		} else {
+			    			printf("El agua no es potable\n");
+			    		}
+					break;
+					
+					//Vallecas
+					case 3:
+						do {
+			    			printf("Introduzca una fuente:\n\n");
+			    			scanf("%d", &i);
+							i=i-1;
+						} while (i<1 || i>NumFuentesVall);
+				
+			    		if (FuenteVall[i].pH < 6.5 || FuenteVall[i].pH > 8) {
+			       			printf("\nLa fuente %s tiene mal ph\n", FuenteVall[i].fuente);
+			    		} else {
+			       			printf("\nLa fuente %s tiene buen ph\n", FuenteVall[i].fuente);
+						}
+			
+			   			if (FuenteVall[i].turbidez > 5) {
+			   				printf("El agua de la fuente %s es turbia\n", FuenteVall[i].fuente);
+			    		} else {
+			        		printf("El agua de la fuente %s no es turbia\n", FuenteVall[i].fuente);
+			    		}
+			
+			    		if (FuenteVall[i].coliformes == 1) {
+			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteVall[i].fuente);
+			    		} else {
+			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteVall[i].fuente);
+			   		 	}
+			
+			   			if (FuenteVall[i].coliformes == 0 && FuenteVall[i].turbidez <= 5 && FuenteVall[i].pH >= 6.5 && FuenteVall[i].pH <= 8) {
+			        		printf("El agua es potable\n");
+			    		} else {
+			    			printf("El agua no es potable\n");
+			    		}
+					break;
+				}
+				break;
+				
+				//Media
 				case 2:
 					
+				break;
+				
+				//Moda
 				case 3:
 				do {
 					printf ("Elija un barrio: \n");
@@ -876,9 +992,9 @@ int main () {
 					printf ("2 - Lavapies \n");
 					printf ("3 - Vallecas \n");
 					scanf ("%d", &op); 
-						} while (op<1 || op>3);
+				} while (op<1 || op>3);
 				
-				switch (op){
+				switch (op) {
 					
 					case 1:
 					valor_repetidoCar = fmodaCar(FuenteCar);
