@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 	
 //Declaracion de structs
 	struct TDatosFuente {
@@ -11,6 +12,8 @@
 	};
 		
 //Prototipos de las funciones
+
+//MAX Y MIN
 	float fmaximoLav(struct TDatosFuente[]);
 	float fmaximoCar(struct TDatosFuente[]);
 	float fmaximoVall(struct TDatosFuente[]);
@@ -18,7 +21,7 @@
 	float fminimoLav(struct TDatosFuente[]);
 	float fminimoCar(struct TDatosFuente[]);
 	float fminimoVall(struct TDatosFuente[]);
-	
+//ORDENAR
 	float fmenoramayorLavpH(struct TDatosFuente[]);
 	float fmenoramayorCarpH(struct TDatosFuente[]);
 	float fmenoramayorVallpH(struct TDatosFuente[]);
@@ -42,16 +45,15 @@
 	int fmayoramenorLavTurbidez(struct TDatosFuente[]);
 	int fmayoramenorCarTurbidez(struct TDatosFuente[]);
 	int fmayoramenorVallTurbidez(struct TDatosFuente[]);
-	
+//RECORRIDO
 	float frecorridoLav(struct TDatosFuente[]);
 	float frecorridoCar(struct TDatosFuente[]);
 	float frecorridoVall(struct TDatosFuente[]);
-	
+//MODA
 	float fmodaLav(struct TDatosFuente[]);
     float fmodaCar(struct TDatosFuente[]);
     float fmodaVall(struct TDatosFuente[]);
-
-
+//COMPARAR
 	void fcompararpHCar(struct TDatosFuente[], int);
 	void fcompararpHLav(struct TDatosFuente[], int); 
 	void fcompararpHVall(struct TDatosFuente[], int);
@@ -71,9 +73,35 @@
 	void fcompararpHLavCar(struct TDatosFuente[], int, struct TDatosFuente[], int);
 	void fcompararpHLavVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
 	void fcompararpHCarVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
+//MEDIA Y DESV
+	float fmediapHCar(struct TDatosFuente[], int);
+	float fmediapHLav(struct TDatosFuente[], int);
+	float fmediapHVall(struct TDatosFuente[], int);
 	
-	void comprobarAgua(struct TDatosFuente[]);
+	float fdespHCar(struct TDatosFuente[], float, int);
+	float fdespHLav(struct TDatosFuente[], float, int);
+	float fdespHVall(struct TDatosFuente[], float, int);
 	
+	float fmediaConCar(struct TDatosFuente[], int);
+	float fmediaConLav(struct TDatosFuente[], int);
+	float fmediaConVall(struct TDatosFuente[], int);
+	
+	float fdesConCar(struct TDatosFuente[], float, int);
+	float fdesConLav(struct TDatosFuente[], float, int);
+	float fdesConVall(struct TDatosFuente[], float, int);
+	
+	float fmediaTurCar(struct TDatosFuente[], int);
+	float fmediaTurLav(struct TDatosFuente[], int);
+	float fmediaTurVall(struct TDatosFuente[], int);
+	
+	float fdesTurCar(struct TDatosFuente[], float, int);
+	float fdesTurLav(struct TDatosFuente[], float, int);
+	float fdesTurVall(struct TDatosFuente[], float, int);
+//BUSCAR FUENTE
+	void fBuscarCar(struct TDatosFuente[], int);
+	void fBuscarLav(struct TDatosFuente[], int);
+	void fBuscarVall(struct TDatosFuente[], int);
+//
 		
 int main () {
 
@@ -93,6 +121,9 @@ int main () {
 	float menoramayor;
 	float mayoramenor;
 	float valor_repetidoCar, valor_repetidoLav, valor_repetidoVall;
+	float mediapHCar, mediapHLav, mediapHVall, despHCar, despHLav, despHVall;
+	float mediaConCar, mediaConLav, mediaConVall, desConCar, desConLav, desConVall;
+	float mediaTurCar, mediaTurLav, mediaTurVall, desTurCar, desTurLav, desTurVall;
 
 //Abrir ficheros y escanearlos	
 
@@ -240,28 +271,25 @@ int main () {
 				//Buscar una fuente
 				case 2:
 					do {
-						printf ("\nSeleccione un barrio: \n");
-						printf ("1 - Lavapies \n");
-						printf ("2 - Carabanchel \n");
-						printf ("3 - Vallecas \n\n");
+						printf ("Introduzca una opcion: \n\n");
+						printf ("1 - Carabanchel \n");
+						printf ("2 - Lavapies \n");
+						printf ("3 - Vallecas \n");
 						scanf ("%d", &op);
 					} while (op<1 || op>3);
 					
 					switch (op) {
-					
-						//Buscar fuentes en Lavapies
+						
 						case 1:
-							printf ("\nIntroduzca el numero de la fuente: \n");
+							fBuscarCar(FuenteCar, NumFuentesCar);
 						break;
-					
-						//Buscar fuentes en Carabanchel
+						
 						case 2:
-							printf ("Introduzca el numero de la fuente: \n");
+							fBuscarLav(FuenteLav, NumFuentesLav);
 						break;
-					
-						//Buscar fuentes en Vallecas
+						
 						case 3:
-							printf ("Introduzca el numero de la fuente: \n");
+							fBuscarVall(FuenteVall, NumFuentesVall);
 						break;
 					}
 				break;
@@ -1012,11 +1040,14 @@ int main () {
 		
 		//Estadisticas
 		case 4:
-			printf("\nSeleccione una opcion: \n\n");
-			printf("1 - Potabilidad \n");
-			printf("2 - Media \n");
-			printf("3 - Moda \n\n");
-			scanf("%d", &op);
+			do{
+				printf("\nSeleccione una opcion: \n\n");
+				printf("1 - Potabilidad \n");
+				printf("2 - Media \n");
+				printf("3 - Moda \n");
+				printf("4 - Desviacion \n\n");
+				scanf("%d", &op);
+			} while (op<1 || op>4);
 			
 			switch (op){
 				
@@ -1030,112 +1061,154 @@ int main () {
 						scanf ("%d", &op);
 					} while (op<1 || op>3);
 	
-				switch (op) {
+					switch (op) {
 					
-					//Carabanchel
-					case 1:
-						do {
-			    			printf("Introduzca una fuente:\n\n");
-			    			scanf("%d", &i);
-							i=i-1;
-						} while (i<1 || i>NumFuentesCar);
-				
-			    		if (FuenteCar[i].pH < 6.5 || FuenteCar[i].pH > 8) {
-			       			printf("\nLa fuente %s tiene mal ph\n", FuenteCar[i].fuente);
-			    		} else {
-			       			printf("\nLa fuente %s tiene buen ph\n", FuenteCar[i].fuente);
-						}
-			
-			   			if (FuenteCar[i].turbidez > 5) {
-			   				printf("El agua de la fuente %s es turbia\n", FuenteCar[i].fuente);
-			    		} else {
-			        		printf("El agua de la fuente %s no es turbia\n", FuenteCar[i].fuente);
-			    		}
-			
-			    		if (FuenteCar[i].coliformes == 1) {
-			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteCar[i].fuente);
-			    		} else {
-			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteCar[i].fuente);
-			   		 	}
-			
-			   			if (FuenteCar[i].coliformes == 0 && FuenteCar[i].turbidez <= 5 && FuenteCar[i].pH >= 6.5 && FuenteCar[i].pH <= 8) {
-			        		printf("El agua es potable\n");
-			    		} else {
-			    			printf("El agua no es potable\n");
-			    		}
-					break;
+						//Carabanchel
+						case 1:
+							do {
+				    			printf("Introduzca una fuente:\n\n");
+				    			scanf("%d", &i);
+								i=i-1;
+							} while (i<1 || i>NumFuentesCar);
 					
-					//Lavapies
-					case 2:
-						do {
-			    			printf("Introduzca una fuente:\n\n");
-			    			scanf("%d", &i);
-							i=i-1;
-						} while (i<1 || i>NumFuentesLav);
+				    		if (FuenteCar[i].pH < 6.5 || FuenteCar[i].pH > 8) {
+				       			printf("\nLa fuente %s tiene mal ph\n", FuenteCar[i].fuente);
+				    		} else {
+				       			printf("\nLa fuente %s tiene buen ph\n", FuenteCar[i].fuente);
+							}
 				
-			    		if (FuenteLav[i].pH < 6.5 || FuenteLav[i].pH > 8) {
-			       			printf("\nLa fuente %s tiene mal ph\n", FuenteLav[i].fuente);
-			    		} else {
-			       			printf("\nLa fuente %s tiene buen ph\n", FuenteLav[i].fuente);
-						}
-			
-			   			if (FuenteLav[i].turbidez > 5) {
-			   				printf("El agua de la fuente %s es turbia\n", FuenteLav[i].fuente);
-			    		} else {
-			        		printf("El agua de la fuente %s no es turbia\n", FuenteLav[i].fuente);
-			    		}
-			
-			    		if (FuenteLav[i].coliformes == 1) {
-			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteLav[i].fuente);
-			    		} else {
-			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteLav[i].fuente);
-			   		 	}
-			
-			   			if (FuenteLav[i].coliformes == 0 && FuenteLav[i].turbidez <= 5 && FuenteLav[i].pH >= 6.5 && FuenteLav[i].pH <= 8) {
-			        		printf("El agua es potable\n");
-			    		} else {
-			    			printf("El agua no es potable\n");
-			    		}
-					break;
+				   			if (FuenteCar[i].turbidez > 5) {
+				   				printf("El agua de la fuente %s es turbia\n", FuenteCar[i].fuente);
+				    		} else {
+				        		printf("El agua de la fuente %s no es turbia\n", FuenteCar[i].fuente);
+				    		}
+				
+				    		if (FuenteCar[i].coliformes == 1) {
+				     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteCar[i].fuente);
+				    		} else {
+				    			printf("El agua de la fuente %s no esta contaminada\n", FuenteCar[i].fuente);
+				   		 	}
+				
+				   			if (FuenteCar[i].coliformes == 0 && FuenteCar[i].turbidez <= 5 && FuenteCar[i].pH >= 6.5 && FuenteCar[i].pH <= 8) {
+				        		printf("El agua es potable\n");
+				    		} else {
+				    			printf("El agua no es potable\n");
+				    		}
+						break;
 					
-					//Vallecas
-					case 3:
-						do {
-			    			printf("Introduzca una fuente:\n\n");
-			    			scanf("%d", &i);
-							i=i-1;
-						} while (i<1 || i>NumFuentesVall);
+						//Lavapies
+						case 2:
+							do {
+				    			printf("Introduzca una fuente:\n\n");
+				    			scanf("%d", &i);
+								i=i-1;
+							} while (i<1 || i>NumFuentesLav);
+					
+				    		if (FuenteLav[i].pH < 6.5 || FuenteLav[i].pH > 8) {
+				       			printf("\nLa fuente %s tiene mal ph\n", FuenteLav[i].fuente);
+				    		} else {
+				       			printf("\nLa fuente %s tiene buen ph\n", FuenteLav[i].fuente);
+							}
 				
-			    		if (FuenteVall[i].pH < 6.5 || FuenteVall[i].pH > 8) {
-			       			printf("\nLa fuente %s tiene mal ph\n", FuenteVall[i].fuente);
-			    		} else {
-			       			printf("\nLa fuente %s tiene buen ph\n", FuenteVall[i].fuente);
-						}
-			
-			   			if (FuenteVall[i].turbidez > 5) {
-			   				printf("El agua de la fuente %s es turbia\n", FuenteVall[i].fuente);
-			    		} else {
-			        		printf("El agua de la fuente %s no es turbia\n", FuenteVall[i].fuente);
-			    		}
-			
-			    		if (FuenteVall[i].coliformes == 1) {
-			     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteVall[i].fuente);
-			    		} else {
-			    			printf("El agua de la fuente %s no esta contaminada\n", FuenteVall[i].fuente);
-			   		 	}
-			
-			   			if (FuenteVall[i].coliformes == 0 && FuenteVall[i].turbidez <= 5 && FuenteVall[i].pH >= 6.5 && FuenteVall[i].pH <= 8) {
-			        		printf("El agua es potable\n");
-			    		} else {
-			    			printf("El agua no es potable\n");
-			    		}
-					break;
-				}
+				   			if (FuenteLav[i].turbidez > 5) {
+				   				printf("El agua de la fuente %s es turbia\n", FuenteLav[i].fuente);
+				    		} else {
+				        		printf("El agua de la fuente %s no es turbia\n", FuenteLav[i].fuente);
+				    		}
+				
+				    		if (FuenteLav[i].coliformes == 1) {
+				     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteLav[i].fuente);
+				    		} else {
+				    			printf("El agua de la fuente %s no esta contaminada\n", FuenteLav[i].fuente);
+				   		 	}
+				
+				   			if (FuenteLav[i].coliformes == 0 && FuenteLav[i].turbidez <= 5 && FuenteLav[i].pH >= 6.5 && FuenteLav[i].pH <= 8) {
+				        		printf("El agua es potable\n");
+				    		} else {
+				    			printf("El agua no es potable\n");
+				    		}
+						break;
+						
+						//Vallecas
+						case 3:
+							do {
+				    			printf("Introduzca una fuente:\n\n");
+				    			scanf("%d", &i);
+								i=i-1;
+							} while (i<1 || i>NumFuentesVall);
+					
+				    		if (FuenteVall[i].pH < 6.5 || FuenteVall[i].pH > 8) {
+				       			printf("\nLa fuente %s tiene mal ph\n", FuenteVall[i].fuente);
+				    		} else {
+				       			printf("\nLa fuente %s tiene buen ph\n", FuenteVall[i].fuente);
+							}
+				
+				   			if (FuenteVall[i].turbidez > 5) {
+				   				printf("El agua de la fuente %s es turbia\n", FuenteVall[i].fuente);
+				    		} else {
+				        		printf("El agua de la fuente %s no es turbia\n", FuenteVall[i].fuente);
+				    		}
+				
+				    		if (FuenteVall[i].coliformes == 1) {
+				     			printf("El agua de la fuente %s esta contaminada con coliformes\n", FuenteVall[i].fuente);
+				    		} else {
+				    			printf("El agua de la fuente %s no esta contaminada\n", FuenteVall[i].fuente);
+				   		 	}
+				
+				   			if (FuenteVall[i].coliformes == 0 && FuenteVall[i].turbidez <= 5 && FuenteVall[i].pH >= 6.5 && FuenteVall[i].pH <= 8) {
+				        		printf("El agua es potable\n");
+				    		} else {
+				    			printf("El agua no es potable\n");
+				    		}
+						break;
+					}
 				break;
 				
 				//Media
 				case 2:
+					do {
+						printf ("Introduzca una opcion: \n\n");
+						printf ("1 - Carabanchel \n");
+						printf ("2 - Lavapies \n");
+						printf ("3 - Vallecas \n");
+						scanf ("%d", &op);
+					} while (op<1 || op>3);
 					
+						mediapHCar = fmediapHCar(FuenteCar, NumFuentesCar);
+						mediapHLav = fmediapHLav(FuenteLav, NumFuentesLav);
+						mediapHVall = fmediapHVall(FuenteVall, NumFuentesVall);
+						
+						mediaConCar = fmediaConCar(FuenteCar, NumFuentesCar);
+						mediaConLav = fmediaConLav(FuenteLav, NumFuentesLav);
+						mediaConVall = fmediaConVall(FuenteVall, NumFuentesVall);
+						
+						mediaTurCar = fmediaTurCar(FuenteCar, NumFuentesCar);
+						mediaTurLav = fmediaTurLav(FuenteLav, NumFuentesLav);
+						mediaTurVall = fmediaTurVall(FuenteVall, NumFuentesVall);
+						
+					switch (op)	{
+										
+						//Carabanchel
+						case 1:
+							printf("La media de pH de Carabanchel es: %.2f\n", mediapHCar);
+							printf("La media de conductividad de Carabanchel es: %.2f\n", mediaConCar);
+							printf("La media de turbidez de Carabanchel es: %.2f\n", mediaTurCar);
+						break;
+					
+						//Lavapies
+						case 2:
+							printf("La media de pH de Lavapies es: %.2f\n", mediapHLav);
+							printf("La media de conductividad de Lavapies es: %.2f\n", mediaConLav);
+							printf("La media de turbidez de Lavapies es: %.2f\n", mediaTurLav);
+						break;
+						
+						//Vallecas
+						case 3:
+							printf("La de media de pH de Vallecas es: %.2f\n", mediapHVall);
+							printf("La de media de conductividad de Vallecas es: %.2f\n", mediaConVall);
+							printf("La media de turbidez de Vallecas es: %.2f\n", mediaTurVall);
+						break;
+					}
 				break;
 				
 				//Moda
@@ -1164,6 +1237,54 @@ int main () {
                 	printf("El pH que mas veces se repite de Vallecas es el: %.2f \n", valor_repetidoVall);
                 	break;
 				}
+				break;
+				
+				//Desviacion
+				case 4:
+					do {
+						printf ("Introduzca una opcion: \n\n");
+						printf ("1 - Carabanchel \n");
+						printf ("2 - Lavapies \n");
+						printf ("3 - Vallecas \n");
+						scanf ("%d", &op);
+					} while (op<1 || op>3);
+					
+						despHCar = fdespHCar(FuenteCar, mediapHCar, NumFuentesCar);
+						despHLav = fdespHLav(FuenteLav, mediapHLav, NumFuentesLav);
+						despHVall = fdespHVall(FuenteCar, mediapHVall, NumFuentesVall);
+						
+						desConCar = fdesConCar(FuenteCar, mediaConCar, NumFuentesCar);
+						desConLav = fdesConLav(FuenteLav, mediaConLav, NumFuentesLav);
+						desConVall = fdesConVall(FuenteCar, mediaConVall, NumFuentesVall);
+						
+						desTurCar = fdesTurCar(FuenteCar, mediaTurCar, NumFuentesCar);
+						desTurLav = fdesTurLav(FuenteLav, mediaTurLav, NumFuentesLav);
+						desTurVall = fdesTurVall(FuenteCar, mediaTurVall, NumFuentesVall);
+					
+					switch (op)	{
+										
+						//Carabanchel
+						case 1:
+							printf("La de desviacion tipica de pH de Carabanchel es: %.2f\n", despHCar);
+							printf("La de desviacion tipica de conductividad de Carabanchel es: %.2f\n", desConCar);
+							printf("La de desviacion tipica de turbidez de Carabanchel es: %.2f\n", desTurCar);
+						break;
+					
+						//Lavapies
+						case 2:
+							printf("La de desviacion tipica de pH de Lavapies es: %.2f\n", despHLav);
+							printf("La de desviacion tipica de conductividad de Lavapies es: %.2f\n", desConLav);
+							printf("La de desviacion tipica de turbidez de Lavapies es: %.2f\n", desTurLav);
+						break;
+						
+						//Vallecas
+						case 3:
+							printf("La de desviacion tipica de pH de Vallecas es: %.2f\n", despHVall);
+							printf("La de desviacion tipica de conductividad de Vallecas es: %.2f\n", desConVall);
+							printf("La de desviacion tipica de turbidez de Vallecas es: %.2f\n", desTurVall);
+						break;
+					}
+				break;
 			}
 		break;
 		
@@ -1198,6 +1319,7 @@ int main () {
 			}
 			return mayor; 
 			}
+		
 		//Lavapies
 			float fmaximoLav (struct TDatosFuente FuenteLav[]) {
 			int i; 
@@ -1210,6 +1332,7 @@ int main () {
 			}
 			return mayor; 
 			}
+		
 		//Vallecas
 			float fmaximoVall (struct TDatosFuente FuenteVall[]) {
 			int i; 
@@ -1490,7 +1613,7 @@ int main () {
 		
 	//MENOR A MAYOR TURBIDEZ
 	
-			//Carabanchel
+		//Carabanchel
 			int fmenoramayorCarTurbidez (struct TDatosFuente FuenteCar[]) {
 	
 			int i,j;
@@ -1677,7 +1800,7 @@ int main () {
 
     //MODA
 
-       //Carabanchel 
+       	//Carabanchel 
         float fmodaCar(struct TDatosFuente FuenteCar[]) {
         int i, j, cont2 = 0, cont1 = 0;
         float aux1;
@@ -1723,30 +1846,28 @@ int main () {
     return aux2;  
 }
 
-    //Vallecas
-    float fmodaVall(struct TDatosFuente FuenteVall[]) {
-    int i, j, cont2 = 0, cont1 = 0;
-    float aux3;
-
-    for (i = 0; i < 30; i++) {
-        for (j = 0; j < 30; j++) {
-            if (FuenteVall[i].pH == FuenteVall[j].pH && i != j) {
-                cont1++;
-            }
-        }
-
-        if (cont1 > cont2) {
-            cont2 = cont1;
-            aux3 = FuenteVall[i].pH;
-        }
-
-        cont1 = 0;
-    }
-
-    return aux3;  
-}
-
-	
+    	//Vallecas
+    	float fmodaVall(struct TDatosFuente FuenteVall[]) {
+		    int i, j, cont2 = 0, cont1 = 0;
+		    float aux3;
+		
+		    for (i = 0; i < 30; i++) {
+		        for (j = 0; j < 30; j++) {
+		            if (FuenteVall[i].pH == FuenteVall[j].pH && i != j) {
+		                cont1++;
+		            }
+		        }
+		
+		        if (cont1 > cont2) {
+		            cont2 = cont1;
+		            aux3 = FuenteVall[i].pH;
+		        }
+		
+		        cont1 = 0;
+		    }
+		
+		    return aux3;  
+		}
 			
 //COMPARAR DATOS
 	//MISMO BARRIO
@@ -1941,6 +2062,7 @@ int main () {
 					printf ("La conductividad %s, %d y la %s: %d tienen la misma conductividad", a, conductividad1, b, conductividad2);
 				}
 			}
+		
 		//Turbidez
 			//Carabanchel
 			void fcompararTurbidezCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
@@ -2036,8 +2158,8 @@ int main () {
 					printf ("La %s, %d y la %s: %d tienen la misma pH", a, turbidez1, b, turbidez2);
 				}
 			}
+		
 		//Coliformes	
-			
 			//Carabanchel
 			void fcompararColiformesCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
 				int i,j,resultado;
@@ -2133,7 +2255,7 @@ int main () {
 				}
 			}
 
-//DIFERENTE BARRIO
+	//DIFERENTE BARRIO
 		//pH
 			//lAVAPIES-CARABANCHEL
 			void fcompararpHLavCar(struct TDatosFuente FuenteLav[], int NumFuentesLav, struct TDatosFuente FuenteCar[], int NumFuentesCar) {
@@ -2169,7 +2291,8 @@ int main () {
 			    } else if (ph1 == ph2) {
 			        printf("La %s: %.2f de Lavapies y la %s: %.2f de Carabanchel tienen el mismo pH\n", a, ph1, b, ph2);
 			    }
-}
+			}
+			
 			//LAVAPIES-VALLECAS
 			void fcompararpHLavVall(struct TDatosFuente FuenteLav[], int NumFuentesLav, struct TDatosFuente FuenteVall[], int NumFuentesVall) {
 			    int i, j, resultado;
@@ -2204,7 +2327,7 @@ int main () {
 			    } else if (ph1 == ph2) {
 			        printf("La %s: %.2f de Lavapies y la %s: %.2f de Vallecas tienen el mismo pH\n", a, ph1, b, ph2);
 			    }
-}
+			}
 			
 			//CARABANCHEL-VALLECAS
 			void fcompararpHCarVall(struct TDatosFuente FuenteCar[], int NumFuentesCar, struct TDatosFuente FuenteVall[], int NumFuentesVall){
@@ -2240,38 +2363,270 @@ int main () {
 			    } else if (ph1 == ph2) {
 			        printf("La %s: %.2f de Carabanchel y la %s: %.2f de Vallecas tienen el mismo pH\n", a, ph1, b, ph2);
 			    }
-}
+			}
+			
+//MEDIA
+	//pH
+		//Car
+			float fmediapHCar(struct TDatosFuente FuenteCar[], int NumFuentesCar){
+				int i;
+				float mediapH = 0, mediapHCar;
+				for(i=0; i<NumFuentesCar; i++){
+					mediapH += FuenteCar[i].pH;
+				}
+				mediapHCar = mediapH / 30;
+				return mediapHCar;
+			}
+		//Lav
+			float fmediapHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav){
+				int i;
+				float mediapH = 0, mediapHLav;
+				for(i=0; i<NumFuentesLav; i++){
+					mediapH += FuenteLav[i].pH;
+				}
+				mediapHLav = mediapH / 25;
+				return mediapHLav;
+			}
+		//Vall
+			float fmediapHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall){
+				int i;
+				float mediapH = 0, mediapHVall;
+				for(i=0; i<NumFuentesVall; i++){
+					mediapH += FuenteVall[i].pH;
+				}
+				mediapHVall = mediapH / 27;
+				return mediapHVall;
+			}
+			
+	//Conductividad
+		//Car
+			float fmediaConCar(struct TDatosFuente FuenteCar[], int NumFuentesCar){
+				int i;
+				float mediaCon = 0, mediaConCar;
+				for(i=0; i<NumFuentesCar; i++){
+					mediaCon += FuenteCar[i].conductividad;
+				}
+				mediaConCar = mediaCon / 30;
+				return mediaConCar;
+			}
+		//Lav
+			float fmediaConLav(struct TDatosFuente FuenteLav[], int NumFuentesLav){
+				int i;
+				float mediaCon = 0, mediaConLav;
+				for(i=0; i<NumFuentesLav; i++){
+					mediaCon += FuenteLav[i].conductividad;
+				}
+				mediaConLav = mediaCon / 25;
+				return mediaConLav;
+			}
+		//Vall
+			float fmediaConVall(struct TDatosFuente FuenteVall[], int NumFuentesVall){
+				int i;
+				float mediaCon = 0, mediaConVall;
+				for(i=0; i<NumFuentesVall; i++){
+					mediaCon += FuenteVall[i].conductividad;
+				}
+				mediaConVall = mediaCon / 27;
+				return mediaConVall;
+			}
+			
+	//Turbidez
+		//Car
+			float fmediaTurCar(struct TDatosFuente FuenteCar[], int NumFuentesCar){
+				int i;
+				float mediaTur = 0, mediaTurCar;
+				for(i=0; i<NumFuentesCar; i++){
+					mediaTur += FuenteCar[i].turbidez;
+				}
+				mediaTurCar = mediaTur / 30;
+				return mediaTurCar;
+			}
+		//Lav
+			float fmediaTurLav(struct TDatosFuente FuenteLav[], int NumFuentesLav){
+				int i;
+				float mediaTur = 0, mediaTurLav;
+				for(i=0; i<NumFuentesLav; i++){
+					mediaTur += FuenteLav[i].turbidez;
+				}
+				mediaTurLav = mediaTur / 25;
+				return mediaTurLav;
+			}
+		//Vall
+			float fmediaTurVall(struct TDatosFuente FuenteVall[], int NumFuentesVall){
+				int i;
+				float mediaTur = 0, mediaTurVall;
+				for(i=0; i<NumFuentesVall; i++){
+					mediaTur += FuenteVall[i].turbidez;
+				}
+				mediaTurVall = mediaTur / 27;
+				return mediaTurVall;
+			}
+					
+//DESVIACION
+	//pH
+		//Car
+			float fdespHCar(struct TDatosFuente FuenteCar[], float mediapHCar, int NumFuentesCar){
+				int i;
+				float sumdespH = 0, despHCar=0;
+				for(i=0; i<NumFuentesCar; i++){
+					sumdespH += (FuenteCar[i].pH - mediapHCar)*(FuenteCar[i].pH - mediapHCar);
+				}
+				despHCar = sqrt(sumdespH/NumFuentesCar);
+				return despHCar;
+			}
+		//Lav
+			float fdespHLav(struct TDatosFuente FuenteLav[], float mediapHLav, int NumFuentesLav){
+				int i;
+				float sumdespH = 0, despHLav=0;
+				for(i=0; i<NumFuentesLav; i++){
+					sumdespH += (FuenteLav[i].pH - mediapHLav)*(FuenteLav[i].pH - mediapHLav);
+				}
+				despHLav = sqrt(sumdespH/NumFuentesLav);
+				return despHLav;
+			}
+		//Vall
+			float fdespHVall(struct TDatosFuente FuenteVall[], float mediapHVall, int NumFuentesVall){
+				int i;
+				float sumdespH = 0, despHVall=0;
+				for(i=0; i<NumFuentesVall; i++){
+					sumdespH += (FuenteVall[i].pH - mediapHVall)*(FuenteVall[i].pH - mediapHVall);
+				}
+				despHVall = sqrt(sumdespH/NumFuentesVall);
+				return despHVall;
+			}
+			
+	//Conductividad
+		//Car
+			float fdesConCar(struct TDatosFuente FuenteCar[], float mediaConCar, int NumFuentesCar){
+				int i;
+				float sumdesCon = 0, desConCar=0;
+				for(i=0; i<NumFuentesCar; i++){
+					sumdesCon += (FuenteCar[i].conductividad - mediaConCar)*(FuenteCar[i].conductividad - mediaConCar);
+				}
+				desConCar = sqrt(sumdesCon/NumFuentesCar);
+				return desConCar;
+			}
+		//Lav
+			float fdesConLav(struct TDatosFuente FuenteLav[], float mediaConLav, int NumFuentesLav){
+				int i;
+				float sumdesCon = 0, desConLav=0;
+				for(i=0; i<NumFuentesLav; i++){
+					sumdesCon += (FuenteLav[i].conductividad - mediaConLav)*(FuenteLav[i].conductividad - mediaConLav);
+				}
+				desConLav = sqrt(sumdesCon/NumFuentesLav);
+				return desConLav;
+			}
+		//Vall
+			float fdesConVall(struct TDatosFuente FuenteVall[], float mediaConVall, int NumFuentesVall){
+				int i;
+				float sumdesCon = 0, desConVall=0;
+				for(i=0; i<NumFuentesVall; i++){
+					sumdesCon += (FuenteVall[i].conductividad - mediaConVall)*(FuenteVall[i].conductividad - mediaConVall);
+				}
+				desConVall = sqrt(sumdesCon/NumFuentesVall);
+				return desConVall;
+			}
+			
+	//Turbidez
+		//Car
+			float fdesTurCar(struct TDatosFuente FuenteCar[], float mediaTurCar, int NumFuentesCar){
+				int i;
+				float sumdesTur = 0, desTurCar=0;
+				for(i=0; i<NumFuentesCar; i++){
+					sumdesTur += (FuenteCar[i].turbidez - mediaTurCar)*(FuenteCar[i].turbidez - mediaTurCar);
+				}
+				desTurCar = sqrt(sumdesTur/NumFuentesCar);
+				return desTurCar;
+			}
+		//Lav
+			float fdesTurLav(struct TDatosFuente FuenteLav[], float mediaTurLav, int NumFuentesLav){
+				int i;
+				float sumdesTur = 0, desTurLav=0;
+				for(i=0; i<NumFuentesLav; i++){
+					sumdesTur += (FuenteLav[i].turbidez - mediaTurLav)*(FuenteLav[i].turbidez - mediaTurLav);
+				}
+				desTurLav = sqrt(sumdesTur/NumFuentesLav);
+				return desTurLav;
+			}
+		//Vall
+			float fdesTurVall(struct TDatosFuente FuenteVall[], float mediaTurVall, int NumFuentesVall){
+				int i;
+				float sumdesTur = 0, desTurVall=0;
+				for(i=0; i<NumFuentesVall; i++){
+					sumdesTur += (FuenteVall[i].turbidez - mediaTurVall)*(FuenteVall[i].turbidez - mediaTurVall);
+				}
+				desTurVall = sqrt(sumdesTur/NumFuentesVall);
+				return desTurVall;
+			}	
+			
+//BUSCAR FUENTE
+	//Car
+		void fBuscarCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
+			int i,j,resultado;
+			int con, tur, col;
+			char a[40], b[40];
+			float pH;
+			printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
+			scanf ("%s", a);
+			for (i=0; i<NumFuentesCar; i++) {
+				resultado = strcmp(a, FuenteCar[i].fuente);
+				if (resultado == 0) {
+				pH = FuenteCar[i].pH;
+				con = FuenteCar[i].conductividad;
+				tur = FuenteCar[i].turbidez;
+				col = FuenteCar[i].coliformes;
+				}
+			}
+			printf("El pH de la fuente es: %.2f \n", pH);
+			printf("La conductividad de la fuente es: %d \n", con);
+			printf("La turbidez fuente es: %d \n", tur);
+			printf("Los coliformes de la fuente es: %d \n\n", col);
+		}
+			
+	//Lav
+		void fBuscarLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+			int i,j,resultado;
+			int con, tur, col;
+			char a[40], b[40];
+			float pH;
+			printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
+			scanf ("%s", a);
+			for (i=0; i<NumFuentesLav; i++) {
+				resultado = strcmp(a, FuenteLav[i].fuente);
+				if (resultado == 0) {
+				pH = FuenteLav[i].pH;
+				con = FuenteLav[i].conductividad;
+				tur = FuenteLav[i].turbidez;
+				col = FuenteLav[i].coliformes;
+				}
+			}
+			printf("El pH de la fuente es: %.2f \n", pH);
+			printf("La conductividad de la fuente es: %d \n", con);
+			printf("La turbidez fuente es: %d \n", tur);
+			printf("Los coliformes de la fuente es: %d \n\n", col);
+		}
 		
-	
-	//ComprobarAgua
-
-/*	
-    printf("Introduzca el numero de la fuente");
-    scanf("%d", &i);
-    
-	void comprobarAgua(struct FuenteLav[i].pH, struct FuenteLav[i].conductividad, struct FuenteLav[i].turbidez, struct FuenteLav[i].coliformes){
-	if (pH < 6.5 || pH > 8) {
-        printf("La fuente %f tiene mal pH\n", FuenteLav[i].pH);
-    } else {
-        printf("La fuente %f tiene buen pH\n", FuenteLav[i].ph);
-    }
-    
-    if (turbidez > 5) {
-        printf("El agua de la fuente %d es turbia\n", FuenteLav[i].turbidez);
-    } else {
-        printf("El agua de la fuente %d no es turbia\n", FuenteLav[i].turbidez);
-    }
-    
-    if (coliformes == 1) {
-        printf("El agua de la fuente %d esta contaminada con coliformes\n", FuenteLav[i].coliformes);
-    } else {
-        printf("El agua de la fuente %d no esta contaminada \n", FuenteLav[i].coliformes);
-    }
-    
-    if (coliformes == 0 && turbidez <= 5 && pH >= 6.5 && pH <= 8){
-        printf("El agua es potable\n");
-    } else {
-        printf("El agua no es potable\n");
-    }
-}
-*/
+	//Vall
+		void fBuscarVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+			int i,j,resultado;
+			int con, tur, col;
+			char a[40], b[40];
+			float pH;
+			printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
+			scanf ("%s", a);
+			for (i=0; i<NumFuentesVall; i++) {
+				resultado = strcmp(a, FuenteVall[i].fuente);
+				if (resultado == 0) {
+				pH = FuenteVall[i].pH;
+				con = FuenteVall[i].conductividad;
+				tur = FuenteVall[i].turbidez;
+				col = FuenteVall[i].coliformes;
+				}
+			}
+			printf("El pH de la fuente es: %.2f \n", pH);
+			printf("La conductividad de la fuente es: %d \n", con);
+			printf("La turbidez fuente es: %d \n", tur);
+			printf("Los coliformes de la fuente es: % \n\n", col);
+		}	
+		
+		
