@@ -10,23 +10,15 @@ struct TDatosFuente {
 };
 
 int main(){
-	float fmediapHCar(struct TDatosFuente[], int);
-	float fmediapHLav(struct TDatosFuente[], int);
-	float fmediapHVall(struct TDatosFuente[], int);
 	
-	float fdespHCar(struct TDatosFuente[], float, int);
-	float fdespHLav(struct TDatosFuente[], float, int);
-	float fdespHVall(struct TDatosFuente[], float, int);
+	void fBuscarCar(struct TDatosFuente[], int);
+	void fBuscarLav(struct TDatosFuente[], int);
+	void fBuscarVall(struct TDatosFuente[], int);
 	
-	float fmediaConCar(struct TDatosFuente[], int);
-	float fmediaConLav(struct TDatosFuente[], int);
-	float fmediaConVall(struct TDatosFuente[], int);
-	
-	
-	float pH, mediapHCar, mediapHLav, mediapHVall, despHCar, despHLav, despHVall;
+	float pH;
 	int conductividad, turbidez, coliformes;
 	char fuente[500];
-	int i=0, n, opcion; 
+	int i=0, n, op; 
 	struct TDatosFuente FuenteCar[500];
 	struct TDatosFuente FuenteLav[500];
 	struct TDatosFuente FuenteVall[500];
@@ -34,7 +26,6 @@ int main(){
 	float maximo=0, minimo=0;
 	float mediapH(float);
 	float desviacionTipica(float);
-	
 	
 	FILE *fCarabanchel;
 	
@@ -98,15 +89,34 @@ int main(){
 	
 	fclose (fVallecas);
 	NumFuentesVall = i;
+
+	do {
+		printf ("Introduzca una opcion: \n\n");
+		printf ("1 - Carabanchel \n");
+		printf ("2 - Lavapies \n");
+		printf ("3 - Vallecas \n");
+		scanf ("%d", &op);
+	} while (op<1 || op>3);
 	
-	fBuscarpHCar(FuenteCar, NumFuentesCar);
-	fBuscarpHLav(FuenteLav, NumFuentesLav);
-	fBuscarpHVall(FuenteVall, NumFuentesVall);
-	
+	switch (op) {
+		
+		case 1:
+			fBuscarCar(FuenteCar, NumFuentesCar);
+		break;
+		
+		case 2:
+			fBuscarLav(FuenteLav, NumFuentesLav);
+		break;
+		
+		case 3:
+			fBuscarVall(FuenteVall, NumFuentesVall);
+		break;
+	}
 	return 0;
 }
 
-			void fBuscarpHCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
+//FUNCIONES
+			void fBuscarCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
 				int i,j,resultado;
 				int con, tur, col;
 				char a[40], b[40];
@@ -128,7 +138,7 @@ int main(){
 				printf("Los coliformes de la fuente es: %d\n\n", col);
 			}
 			
-			void fBuscarpHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+			void fBuscarLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
 				int i,j,resultado;
 				int con, tur, col;
 				char a[40], b[40];
@@ -150,7 +160,7 @@ int main(){
 				printf("Los coliformes de la fuente es: %d\n\n", col);
 			}
 			
-			void fBuscarpHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+			void fBuscarVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
 				int i,j,resultado;
 				int con, tur, col;
 				char a[40], b[40];
