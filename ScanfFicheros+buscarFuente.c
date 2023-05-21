@@ -121,21 +121,21 @@ int main(){
 				int con, tur, col;
 				char a[40], b[40];
 				float pH;
-				printf ("Introduce el nombre de la fuente que quieres buscar:\n");
+				printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
 				scanf ("%s", a);
 				for (i=0; i<NumFuentesCar; i++) {
 					resultado = strcmp(a, FuenteCar[i].fuente);
-					if (resultado == 0){
+					if (resultado == 0) {
 					pH = FuenteCar[i].pH;
 					con = FuenteCar[i].conductividad;
 					tur = FuenteCar[i].turbidez;
 					col = FuenteCar[i].coliformes;
 					}
 				}
-				printf("El pH de la fuente es: %.2f\n", pH);
-				printf("La conductividad de la fuente es: %d\n", con);
-				printf("La turbidez fuente es: %d\n", tur);
-				printf("Los coliformes de la fuente es: %d\n\n", col);
+				printf("El pH de la fuente es: %.2f \n", pH);
+				printf("La conductividad de la fuente es: %d \n", con);
+				printf("La turbidez fuente es: %d \n", tur);
+				printf("Los coliformes de la fuente es: %d \n\n", col);
 			}
 			
 			void fBuscarLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
@@ -143,21 +143,21 @@ int main(){
 				int con, tur, col;
 				char a[40], b[40];
 				float pH;
-				printf ("Introduce el nombre de la fuente que quieres buscar:\n");
+				printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
 				scanf ("%s", a);
 				for (i=0; i<NumFuentesLav; i++) {
 					resultado = strcmp(a, FuenteLav[i].fuente);
-					if (resultado == 0){
+					if (resultado == 0) {
 					pH = FuenteLav[i].pH;
 					con = FuenteLav[i].conductividad;
 					tur = FuenteLav[i].turbidez;
 					col = FuenteLav[i].coliformes;
 					}
 				}
-				printf("El pH de la fuente es: %.2f\n", pH);
-				printf("La conductividad de la fuente es: %d\n", con);
-				printf("La turbidez fuente es: %d\n", tur);
-				printf("Los coliformes de la fuente es: %d\n\n", col);
+				printf("El pH de la fuente es: %.2f \n", pH);
+				printf("La conductividad de la fuente es: %d \n", con);
+				printf("La turbidez fuente es: %d \n", tur);
+				printf("Los coliformes de la fuente es: %d \n\n", col);
 			}
 			
 			void fBuscarVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
@@ -165,20 +165,19 @@ int main(){
 				int con, tur, col;
 				char a[40], b[40];
 				float pH;
-				printf ("Introduce el nombre de la fuente que quieres buscar:\n");
+				printf ("Introduce el nombre de la fuente que quieres buscar. Por ejemplo: Fuente_4\n");
 				scanf ("%s", a);
 				for (i=0; i<NumFuentesVall; i++) {
 					resultado = strcmp(a, FuenteVall[i].fuente);
-					if (resultado == 0){
+					if (resultado == 0) {
 					pH = FuenteVall[i].pH;
 					con = FuenteVall[i].conductividad;
 					tur = FuenteVall[i].turbidez;
 					col = FuenteVall[i].coliformes;
 					}
 				}
-				printf("El pH de la fuente es: %.2f\n", pH);
-				printf("La conductividad de la fuente es: %d\n", con);
-				printf("La turbidez fuente es: %d\n", tur);
-				printf("Los coliformes de la fuente es: %d\n\n", col);
+				printf("El pH de la fuente es: %.2f \n", pH);
+				printf("La conductividad de la fuente es: %d \n", con);
+				printf("La turbidez fuente es: %d \n", tur);
+				printf("Los coliformes de la fuente es: % \n\n", col);
 			}	
-
