@@ -169,7 +169,6 @@ int main () {
 		FuenteCar[i].coliformes = coliformes;
 		i++;
 	}
-//	rewind(fCarabanchel); intente meter esto para quue el fichero se mostrara entero en opcion1, pero no lo consegui -ale
 	fclose (fCarabanchel);
 	NumFuentesCar = i;
 	
@@ -191,7 +190,6 @@ int main () {
 		FuenteVall[i].coliformes = coliformes;
 		i++;
 	}	
-	
 	fclose (fVallecas);
 	NumFuentesVall = i;
 
@@ -417,9 +415,9 @@ int main () {
 			switch (op) {
 			
 				//Comparar pH
-			case 1: 
+				case 1: 
 					do {
-						printf ("\nComparacion de datos de pH\n\n");
+						printf ("\nComparacion de datos de pH \n\n");
 						printf ("Elija una opcion: \n");
 						printf ("1 - Maximo \n");
 						printf ("2 - Minimo \n");
@@ -431,6 +429,7 @@ int main () {
 					
 					switch (op) {
 						
+						//Maximo pH
 						case 1:
 							do {
 								printf ("Elija un barrio: \n");
@@ -458,7 +457,8 @@ int main () {
 								break;	
 							}
 						break;
-							
+						
+						//Minimo pH
 						case 2:
 							do {
 							printf ("Elija un barrio: \n");
@@ -486,6 +486,8 @@ int main () {
 								break;				
 							}
 						break;
+						
+						//Recorrido pH
 						case 3:
 							do {
 							printf ("Elija un barrio: \n");
@@ -510,7 +512,8 @@ int main () {
 								break;				
 							}
 						break;
-							
+						
+						//Mismo barrio pH
 						case 4:
 							do {
 								printf ("Elija un barrio: \n");
@@ -535,6 +538,8 @@ int main () {
 								break;
 							}
 						break;
+						
+						//Diferente barrio pH
 						case 5:
 							do {
 								printf ("Elija entre dos barrios: \n");
@@ -565,8 +570,7 @@ int main () {
 				//Comparar conductividad
 				case 2:
 					printf ("\nComparacion de datos de conductividad \n");
-						do {
-						printf ("\nComparacion de datos de Conductividad\n\n");
+					do {
 						printf ("Elija una opcion: \n");
 						printf ("1 - Maximo \n");
 						printf ("2 - Minimo \n");
@@ -578,6 +582,7 @@ int main () {
 					
 					switch (op) {
 						
+						//Maximo Con
 						case 1:
 							do {
 								printf ("Elija un barrio: \n");
@@ -605,7 +610,8 @@ int main () {
 								break;	
 							}
 						break;
-							
+						
+						//Minimo Con
 						case 2:
 							do {
 							printf ("Elija un barrio: \n");
@@ -633,6 +639,8 @@ int main () {
 								break;				
 							}
 						break;
+						
+						//Recorrido Con
 						case 3:
 							do {
 							printf ("Elija un barrio: \n");
@@ -657,7 +665,8 @@ int main () {
 								break;				
 							}
 						break;
-							
+						
+						//Mismo barrio Con
 						case 4:
 							do {
 								printf ("Elija un barrio: \n");
@@ -678,10 +687,12 @@ int main () {
 								break; 
 								
 								case 3: 
-									fcompararConductividadLav(FuenteVall, NumFuentesVall); 
+									fcompararConductividadVall(FuenteVall, NumFuentesVall); 
 								break;
 							}
 						break;
+						
+						//Diferente barrio Con
 						case 5:
 							do {
 								printf ("Elija entre dos barrios: \n");
