@@ -56,6 +56,18 @@
 	void fcompararpHLav(struct TDatosFuente[], int); 
 	void fcompararpHVall(struct TDatosFuente[], int);
 	
+	void fcompararConductividadCar(struct TDatosFuente[], int);
+	void fcompararConductividadLav(struct TDatosFuente[], int);
+	void fcompararConductividadVall(struct TDatosFuente[], int);
+	
+	void fcompararTurbidezCar(struct TDatosFuente[], int);
+	void fcompararTurbidezLav(struct TDatosFuente[], int);
+	void fcompararTurbidezVall(struct TDatosFuente[], int);
+	
+	void fcompararColiformesCar(struct TDatosFuente[], int);
+	void fcompararColiformesLav(struct TDatosFuente[], int);
+	void fcompararColiformesVall(struct TDatosFuente[], int);
+	
 	void fcompararpHLavCar(struct TDatosFuente[], int, struct TDatosFuente[], int);
 	void fcompararpHLavVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
 	void fcompararpHCarVall(struct TDatosFuente[], int, struct TDatosFuente[], int);
@@ -377,7 +389,7 @@ int main () {
 			switch (op) {
 			
 				//Comparar pH
-				case 1: 
+			case 1: 
 					do {
 						printf ("\nComparacion de datos de pH\n\n");
 						printf ("Elija una opcion: \n");
@@ -525,6 +537,148 @@ int main () {
 				//Comparar conductividad
 				case 2:
 					printf ("\nComparacion de datos de conductividad \n");
+						do {
+						printf ("\nComparacion de datos de Conductividad\n\n");
+						printf ("Elija una opcion: \n");
+						printf ("1 - Maximo \n");
+						printf ("2 - Minimo \n");
+						printf ("3 - Recorrido\n");
+						printf ("4 - Comparar conductividad de 2 fuentes de un mismo barrio \n");
+						printf ("5 - Comparar conductividad de 2 fuentes de barrios diferentes \n");
+						scanf ("%d", &op); 
+					} while (op<1 || op>5);
+					
+					switch (op) {
+						
+						case 1:
+							do {
+								printf ("Elija un barrio: \n");
+								printf ("1 - Carabanchel\n");
+								printf ("2 - Lavapies \n");
+								printf ("3 - Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									maximo=fmaximoCar(FuenteCar); 
+									printf ("El pH maximo es: %f \n", maximo);
+								break;
+								
+								case 2:
+									maximo=fmaximoLav(FuenteLav); 
+									printf ("El pH maximo es: %f \n", maximo); 
+								break;
+								
+								case 3:
+									maximo=fmaximoVall(FuenteVall); 
+										printf ("El pH maximo es: %f \n", maximo); 
+								break;	
+							}
+						break;
+							
+						case 2:
+							do {
+							printf ("Elija un barrio: \n");
+							printf ("1 - Carabanchel\n");
+							printf ("2 - Lavapies \n");
+							printf ("3 - Vallecas \n");
+							scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									minimo=fminimoCar(FuenteCar);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;
+								
+								case 2:
+									minimo=fminimoLav(FuenteLav);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;
+									
+								case 3:
+									minimo=fminimoVall(FuenteVall);
+									printf ("El pH minimo es: %f \n", minimo);
+								break;				
+							}
+						break;
+						case 3:
+							do {
+							printf ("Elija un barrio: \n");
+							printf ("1 - Carabanchel\n");
+							printf ("2 - Lavapies \n");
+							printf ("3 - Vallecas \n");
+							scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									printf ("El recorrido es: %f \n", frecorridoCar(FuenteCar));
+								break;
+								
+								case 2:
+									printf ("El recorrido es: %f \n",frecorridoLav(FuenteLav));
+								break;
+									
+								case 3:
+									printf ("El recorrido es: %f \n",frecorridoVall(FuenteVall));
+								break;				
+							}
+						break;
+							
+						case 4:
+							do {
+								printf ("Elija un barrio: \n");
+								printf ("1 - Carabanchel\n");
+								printf ("2 - Lavapies \n");
+								printf ("3 - Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									fcompararConductividadCar(FuenteCar, NumFuentesCar);	
+								break;
+									
+								case 2: 
+									fcompararConductividadLav(FuenteLav, NumFuentesLav); 
+								break; 
+								
+								case 3: 
+									fcompararConductividadLav(FuenteVall, NumFuentesVall); 
+								break;
+							}
+						break;
+						case 5:
+							do {
+								printf ("Elija entre dos barrios: \n");
+								printf ("1 - Lavapies<->Carabanchel\n");
+								printf ("2 - Lavapies<->Vallecas \n");
+								printf ("3 - Carabanchel<->Vallecas \n");
+								scanf ("%d", &op); 
+							} while (op<1 || op>3);
+							
+							switch (op) {
+								
+								case 1:
+									fcompararpHLavCar(FuenteLav, NumFuentesLav, FuenteCar, NumFuentesCar);	
+								break;
+									
+								case 2: 
+									fcompararpHLavVall(FuenteLav, NumFuentesLav, FuenteVall, NumFuentesVall); 
+								break; 
+								
+								case 3: 
+									fcompararpHCarVall(FuenteCar, NumFuentesCar, FuenteVall, NumFuentesVall); 
+								break;
+							}
+						break;		
+					}
 				break;
 				
 				//Comparar turbidez
@@ -1696,8 +1850,8 @@ int main () {
 			//Carabanchel
 			void fcompararConductividadCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
 				int i,j,resultado;
-				char a[40], b[40]; //esto solucionaba el error que nos salia esta tarde -ale
-				float conductividad1, conductividad2;
+				char a[40], b[40]; 
+				int conductividad1, conductividad2;
 				printf ("Introduce el nombre de la primera fuente a comparar. Por ejemplo, Fuente_4.\n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
@@ -1716,19 +1870,19 @@ int main () {
 					}
 				}
 				if (conductividad1<conductividad2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+					printf ("La conductividad de la %s: %.2f es menor que la de la %s: %.2f", a, conductividad1, b, conductividad2);
+				} else if (conductividad1>conductividad2) {
+					printf ("La conductividad de la %s: %.2f es mayor que la de la %s: %.2f \n", a, conductividad1, b, conductividad2);
+				} else if (conductividad1==conductividad2) {
+					printf ("La %s, %d y la %s: %d tienen la misma conductividad", a, conductividad1, b, conductividad2);
 				}
 			}
 			
 			//Lavapiés
-			void fcompararpHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+			void fcompararConductividadLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
 				int i, j, resultado; 
 				char a[40], b[40]; 
-				float ph1, ph2; 
+				int conductividad1, conductividad2; 
 				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
@@ -1736,31 +1890,31 @@ int main () {
 				for (i=0; i<NumFuentesLav; i++) {
 					resultado = strcmp(a, FuenteLav[i].fuente);
 					if (resultado == 0){
-					ph1=FuenteLav[i].pH;
+					conductividad1=FuenteLav[i].conductividad;
 					}
 				}
 				
 				for (j=0; j<NumFuentesLav; j++) {
 					resultado = strcmp(b, FuenteLav[j].fuente);
 					if (resultado == 0){
-					ph2=FuenteLav[j].pH;
+					conductividad2=FuenteLav[j].conductividad;
 					}
 				}
 				
-				if (ph1<ph2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				if (conductividad1<conductividad2) {
+					printf ("La conductividad de la %s: %d es menor que la de la %s: %.2f", a, conductividad1, b, conductividad2);
+				} else if (conductividad1>conductividad2) {
+					printf ("La conductividad de la %s: %d es mayor que la de la %s: %.2f \n", a, conductividad1, b, conductividad2);
+				} else if (conductividad1==conductividad2) {
+					printf ("La conductividad %s, %d y la %s: %d tienen la misma conductividad", a, conductividad1, b, conductividad2);
 				}
 			}
 			
 			//Vallecas
-			void fcompararpHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+				void fcompararConductividadVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
 				int i, j, resultado; 
 				char a[40], b[40]; 
-				float ph1, ph2; 
+				int conductividad1, conductividad2; 
 				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
@@ -1768,31 +1922,31 @@ int main () {
 				for (i=0; i<NumFuentesVall; i++) {
 					resultado = strcmp(a, FuenteVall[i].fuente);
 					if (resultado == 0){
-					ph1=FuenteVall[i].pH;
+					conductividad1=FuenteVall[i].conductividad;
 					}
 				}
 				
 				for (j=0; j<NumFuentesVall; j++) {
 					resultado = strcmp(b, FuenteVall[j].fuente);
 					if (resultado == 0){
-					ph2=FuenteVall[j].pH;
+					conductividad2=FuenteVall[j].conductividad;
 					}
 				}
 				
-				if (ph1<ph2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				if (conductividad1<conductividad2) {
+					printf ("La conductividad de la %s: %d es menor que la de la %s: %.2f", a, conductividad1, b, conductividad2);
+				} else if (conductividad1>conductividad2) {
+					printf ("La conductividad de la %s: %d es mayor que la de la %s: %.2f \n", a, conductividad1, b, conductividad2);
+				} else if (conductividad1==conductividad2) {
+					printf ("La conductividad %s, %d y la %s: %d tienen la misma conductividad", a, conductividad1, b, conductividad2);
 				}
 			}
 		//Turbidez
 			//Carabanchel
-			void fcompararpHCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
+			void fcompararTurbidezCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
 				int i,j,resultado;
 				char a[40], b[40]; //esto solucionaba el error que nos salia esta tarde -ale
-				float ph1, ph2;
+				int turbidez1, turbidez2;
 				printf ("Introduce el nombre de la primera fuente a comparar. Por ejemplo, Fuente_4.\n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
@@ -1800,30 +1954,30 @@ int main () {
 				for (i=0; i<NumFuentesCar; i++) {
 					resultado = strcmp(a, FuenteCar[i].fuente);
 					if (resultado == 0){
-					ph1=FuenteCar[i].pH;
+					turbidez1=FuenteCar[i].turbidez;
 					}
 				}
 				
 				for (j=0; j<NumFuentesCar; j++) {
 					resultado = strcmp(b, FuenteCar[j].fuente);
 					if (resultado == 0){
-					ph2=FuenteCar[j].pH;
+					turbidez2=FuenteCar[j].turbidez;
 					}
 				}
-				if (ph1<ph2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				if (turbidez1<turbidez2) {
+					printf ("La turbidez de la %s: %d es menor que la de la %s: %d", a, turbidez1, b, turbidez2);
+				} else if (turbidez1>turbidez2) {
+					printf ("La turbidez de la %s: %d es mayor que el de la %s: %d \n", a, turbidez1, b, turbidez2);
+				} else if (turbidez1==turbidez2) {
+					printf ("La %s, %d y la %s: %d tienen la misma pH", a, turbidez1, b, turbidez2);
 				}
 			}
 			
 			//Lavapiés
-			void fcompararpHLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+			void fcompararTurbidezLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
 				int i, j, resultado; 
 				char a[40], b[40]; 
-				float ph1, ph2; 
+				int turbidez1, turbidez2; 
 				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
@@ -1831,31 +1985,31 @@ int main () {
 				for (i=0; i<NumFuentesLav; i++) {
 					resultado = strcmp(a, FuenteLav[i].fuente);
 					if (resultado == 0){
-					ph1=FuenteLav[i].pH;
+					turbidez1=FuenteLav[i].turbidez;
 					}
 				}
 				
 				for (j=0; j<NumFuentesLav; j++) {
 					resultado = strcmp(b, FuenteLav[j].fuente);
 					if (resultado == 0){
-					ph2=FuenteLav[j].pH;
+					turbidez2=FuenteLav[j].turbidez;
 					}
 				}
 				
-				if (ph1<ph2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				if (turbidez1<turbidez2) {
+					printf ("La turbidez de la %s: %d es menor que la de la %s: %d", a, turbidez1, b, turbidez2);
+				} else if (turbidez1>turbidez2) {
+					printf ("La turbidez de la %s: %d es mayor que el de la %s: %d \n", a, turbidez1, b, turbidez2);
+				} else if (turbidez1==turbidez2) {
+					printf ("La %s, %d y la %s: %d tienen la misma pH", a, turbidez1, b, turbidez2);
 				}
 			}
 			
 			//Vallecas
-			void fcompararpHVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+			void fcompararTurbidezVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
 				int i, j, resultado; 
 				char a[40], b[40]; 
-				float ph1, ph2; 
+				int turbidez1, turbidez2; 
 				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
 				scanf ("%s", a);
 				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
@@ -1863,27 +2017,121 @@ int main () {
 				for (i=0; i<NumFuentesVall; i++) {
 					resultado = strcmp(a, FuenteVall[i].fuente);
 					if (resultado == 0){
-					ph1=FuenteVall[i].pH;
+					turbidez1=FuenteVall[i].turbidez;
 					}
 				}
 				
 				for (j=0; j<NumFuentesVall; j++) {
 					resultado = strcmp(b, FuenteVall[j].fuente);
 					if (resultado == 0){
-					ph2=FuenteVall[j].pH;
+					turbidez2=FuenteVall[j].turbidez;
 					}
 				}
 				
-				if (ph1<ph2) {
-					printf ("El pH de la %s: %.2f es menor que el de la %s: %.2f", a, ph1, b, ph2);
-				} else if (ph1>ph2) {
-					printf ("El pH de la %s: %.2f es mayor que el de la %s: %.2f \n", a, ph1, b, ph2);
-				} else if (ph1==ph2) {
-					printf ("La %s, %.2f y la %s: %.2f tienen el mismo pH", a, ph1, b, ph2);
+				if (turbidez1<turbidez2) {
+					printf ("La turbidez de la %s: %d es menor que la de la %s: %d", a, turbidez1, b, turbidez2);
+				} else if (turbidez1>turbidez2) {
+					printf ("La turbidez de la %s: %d es mayor que el de la %s: %d \n", a, turbidez1, b, turbidez2);
+				} else if (turbidez1==turbidez2) {
+					printf ("La %s, %d y la %s: %d tienen la misma pH", a, turbidez1, b, turbidez2);
 				}
 			}
 		//Coliformes	
 			
+			//Carabanchel
+			void fcompararColiformesCar(struct TDatosFuente FuenteCar[], int NumFuentesCar) {
+				int i,j,resultado;
+				char a[40], b[40]; //esto solucionaba el error que nos salia esta tarde -ale
+				int coliformes1, coliformes2;
+				printf ("Introduce el nombre de la primera fuente a comparar. Por ejemplo, Fuente_4.\n");
+				scanf ("%s", a);
+				printf ("Introduce el nombre de la segunda fuente a comparar. Por ejemplo, Fuente_5. \n");
+				scanf ("%s", b);
+				for (i=0; i<NumFuentesCar; i++) {
+					resultado = strcmp(a, FuenteCar[i].fuente);
+					if (resultado == 0){
+					coliformes1=FuenteCar[i].coliformes;
+					}
+				}
+				
+				for (j=0; j<NumFuentesCar; j++) {
+					resultado = strcmp(b, FuenteCar[j].fuente);
+					if (resultado == 0){
+					coliformes2=FuenteCar[j].coliformes;
+					}
+				}
+				if (coliformes1<coliformes2) {
+					printf ("Los coliformes de la %s: %d son menores que los de la %s: %d", a, coliformes1, b, coliformes2);
+				} else if (coliformes1>coliformes2) {
+					printf ("Los coliformes de la %s: %d son mayores que los de la %s: %d \n", a, coliformes1, b, coliformes2);
+				} else if (coliformes1==coliformes2) {
+					printf ("La %s, %d y la %s: %d tienen los mismos coliformes", a, coliformes1, b, coliformes2);
+				}
+			}
+			
+			//Lavapiés
+			void fcompararColiformesLav(struct TDatosFuente FuenteLav[], int NumFuentesLav) {
+				int i, j, resultado; 
+				char a[40], b[40]; 
+				int coliformes1, coliformes2; 
+				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
+				scanf ("%s", a);
+				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
+				scanf("%s",b);
+				for (i=0; i<NumFuentesLav; i++) {
+					resultado = strcmp(a, FuenteLav[i].fuente);
+					if (resultado == 0){
+					coliformes1=FuenteLav[i].coliformes;
+					}
+				}
+				
+				for (j=0; j<NumFuentesLav; j++) {
+					resultado = strcmp(b, FuenteLav[j].fuente);
+					if (resultado == 0){
+					coliformes2=FuenteLav[j].coliformes;
+					}
+				}
+				
+				if (coliformes1<coliformes2) {
+					printf ("Los coliformes de la %s: %d son menores que los de la %s: %d \n", a, coliformes1, b, coliformes2);
+				} else if (coliformes1>coliformes2) {
+					printf ("Los coliformes de la %s: %d son mayores que los de la %s: %d \n", a, coliformes1, b, coliformes2);
+				} else if (coliformes1==coliformes2) {
+					printf ("La %s, %d y la %s: %d tienen los mismos coliformes \n", a, coliformes1, b, coliformes2);
+				}
+			}
+			
+			//Vallecas
+			void fcompararColiformesVall(struct TDatosFuente FuenteVall[], int NumFuentesVall) {
+				int i, j, resultado; 
+				char a[40], b[40]; 
+				int coliformes1, coliformes2; 
+				printf ("Introduce el nombre de la primera fuente que quieres comaparar. Por ejemplo: Fuente_4. \n");
+				scanf ("%s", a);
+				printf ("Introduce el nombre de la segunda fuente que quieres comparar. Por ejemplo: Fuente_5. \n");
+				scanf("%s",b);
+				for (i=0; i<NumFuentesVall; i++) {
+					resultado = strcmp(a, FuenteVall[i].fuente);
+					if (resultado == 0){
+					coliformes1=FuenteVall[i].coliformes;
+					}
+				}
+				
+				for (j=0; j<NumFuentesVall; j++) {
+					resultado = strcmp(b, FuenteVall[j].fuente);
+					if (resultado == 0){
+					coliformes2=FuenteVall[j].coliformes;
+					}
+				}
+				
+				if (coliformes1<coliformes2) {
+					printf ("Los coliformes de la %s: %d son menores que los de la %s: %d \n", a, coliformes1, b, coliformes2);
+				} else if (coliformes1>coliformes2) {
+					printf ("Los coliformes de la %s: %d son mayores que los de la %s: %d \n", a, coliformes1, b, coliformes2);
+				} else if ( coliformes1== coliformes2) {
+					printf ("La %s, %d y la %s: %d tienen los mismos coliformes \n", a, coliformes1, b, coliformes2);
+				}
+			}
 
 //DIFERENTE BARRIO
 		//pH
