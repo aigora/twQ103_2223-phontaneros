@@ -18,6 +18,10 @@ int main(){
 	float fdespHLav(struct TDatosFuente[], float, int);
 	float fdespHVall(struct TDatosFuente[], float, int);
 	
+	float fmediaConCar(struct TDatosFuente[], int);
+	float fmediaConLav(struct TDatosFuente[], int);
+	float fmediaConVall(struct TDatosFuente[], int);
+	
 	
 	float pH, mediapHCar, mediapHLav, mediapHVall, despHCar, despHLav, despHVall;
 	int conductividad, turbidez, coliformes;
@@ -111,6 +115,7 @@ int main(){
 	printf("La de desviacion tipica de pH de Lavapies es: %.2f\n", despHLav);
 	printf("La de desviacion tipica de pH de Vallecas es: %.2f\n", despHVall);
 	
+	printf("La de media de pH de Carabanchel es: %.2f\n", fmediaConCar)
 	return 0;
 }
 
@@ -175,3 +180,4 @@ float fdespHVall(struct TDatosFuente FuenteVall[], float mediapHVall, int NumFue
 	despHVall = sqrt(sumdespH/NumFuentesVall);
 	return despHVall;
 }
+
