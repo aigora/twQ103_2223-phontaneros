@@ -1266,7 +1266,7 @@ int main () {
 						
 						desConCar = fdesConCar(FuenteCar, mediaConCar, NumFuentesCar);
 						desConLav = fdesConLav(FuenteLav, mediaConLav, NumFuentesLav);
-						desConVall = fdesConVall(FuenteCar, mediaConVall, NumFuentesVall);
+						desConVall = fdesConVall(FuenteVall, mediaConVall, NumFuentesVall);
 						
 						desTurCar = fdesTurCar(FuenteCar, mediaTurCar, NumFuentesCar);
 						desTurLav = fdesTurLav(FuenteLav, mediaTurLav, NumFuentesLav);
