@@ -153,7 +153,7 @@ int main () {
 	NumFuentesVall = i;
 
 	//SELECCIONAR PROGRAMA
-	printf ("\t\t\t\t=================== PHONTANEROS =================== \n\n");
+	printf ("\t\t\t\t==================== PHONTANEROS ==================== \n\n");
 	do {
 	printf ("Introduzca una opcion: \n\n");
 	printf ("1 - Buscar datos \n");
