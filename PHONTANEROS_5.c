@@ -210,24 +210,26 @@ int main () {
 		
 		//Buscar datos
 		case 1: 
+			printf("\n-----BUSCAR DATOS-----\n");
 			do {
-			printf ("\nSeleccione una opcion: \n");
-			printf ("1 - Ver ficheros \n");
-			printf ("2 - Buscar una fuente \n");
-			printf ("3 - Buscar un dato \n\n");
-			scanf("%d", &op);
+				printf ("\nSeleccione una opcion: \n");
+				printf ("1 - Ver ficheros \n");
+				printf ("2 - Buscar una fuente \n");
+				printf ("3 - Buscar un dato \n\n");
+				scanf("%d", &op);
 			} while (op<1 || op>3);
 			
 			switch (op) {
 				
 				//Ver ficheros
 				case 1:
+					printf("\n-----VER FICHEROS-----\n");
 					do {
-					printf ("\nSeleccione un barrio: \n");
-					printf ("1 - Carabanchel \n");
-					printf ("2 - Lavapies \n");
-					printf ("3 - Vallecas \n\n");
-					scanf ("%d", &op);
+						printf ("\nSeleccione un barrio: \n");
+						printf ("1 - Carabanchel \n");
+						printf ("2 - Lavapies \n");
+						printf ("3 - Vallecas \n\n");
+						scanf ("%d", &op);
 					} while (op<1 || op>3);
 					
 					switch (op) {
@@ -240,9 +242,7 @@ int main () {
 								printf ("%s \t%.2f\t\t%d\t    %d\t       %d\n", FuenteCar[i].fuente, FuenteCar[i].pH, FuenteCar[i].conductividad, FuenteCar[i].turbidez, FuenteCar[i].coliformes);
 							}
 							printf ("\nEl numero de fuentes de Carabanchel es %d\n", NumFuentesCar);
-							
 						break;
-					
 						
 						//Ver Lavapies
 						case 2:
@@ -268,11 +268,12 @@ int main () {
 				
 				//Buscar una fuente
 				case 2:
+					printf("\n-----BUSCAR FUENTE-----\n");
 					do {
 						printf ("Introduzca una opcion: \n\n");
 						printf ("1 - Carabanchel \n");
 						printf ("2 - Lavapies \n");
-						printf ("3 - Vallecas \n");
+						printf ("3 - Vallecas \n\n");
 						scanf ("%d", &op);
 					} while (op<1 || op>3);
 					
@@ -292,117 +293,15 @@ int main () {
 					}
 				break;
 				
-				//Buscar un dato
-				case 3:
-					do {
-						printf ("\nSeleccione una opcion: \n");
-						printf ("1 - Lavapies \n");
-						printf ("2 - Carabanchel \n");
-						printf ("3 - Vallecas \n\n");
-						scanf ("%d", &op);
-					} while (op<1 || op>3);
+				case 0:
 					
-					switch (op) {
-						
-						//Buscar un dato en Lavapies
-						case 1:
-							do{
-								printf ("\nElija un dato a buscar:\n");
-								printf ("1 - pH \n");
-								printf ("2 - Conductividad \n");
-								printf ("3 - Turbidez \n");
-								printf ("4 - Coliformes \n");
-								scanf ("%d", &op);
-							} while (op<1 || op>4);
-							
-							switch (op) {
-								
-								case 1:
-									
-								break;
-								
-								case 2:
-									
-								break;
-								
-								case 3:
-								
-								break;
-								
-								case 4:
-									
-								break;
-							}
-						break;
-						
-						//Buscar un dato en Carabanchel
-						case 2:
-							do{
-								printf ("\nElija un dato a buscar:\n");
-								printf ("1 - pH \n");
-								printf ("2 - Conductividad \n");
-								printf ("3 - Turbidez \n");
-								printf ("4 - Coliformes \n");
-								scanf ("%d", &op);
-							} while (op<1 || op>4);
-							
-							switch (op) {
-								
-								case 1:
-									
-								break;
-								
-								case 2:
-									
-								break;
-								
-								case 3:
-								
-								break;
-								
-								case 4:
-									
-								break;
-							}
-						break;
-						
-						//Buscar un dato en Vallecas
-						case 3:
-							do{
-								printf ("\nElija un dato a buscar:\n");
-								printf ("1 - pH \n");
-								printf ("2 - Conductividad \n");
-								printf ("3 - Turbidez \n");
-								printf ("4 - Coliformes \n");
-								scanf ("%d", &op);
-							} while (op<1 || op>4);
-							
-							switch (op) {
-								
-								case 1:
-									
-								break;
-								
-								case 2:
-									
-								break;
-								
-								case 3:
-								
-								break;
-								
-								case 4:
-									
-								break;
-							}
-						break;
-					}
 				break;
 			}
 		break;
 		
 		//Comparar datos
 		case 2:
+			printf("\n-----COMPARAR DATOS-----\n");
 			do{
 				printf ("\nIntroduce que quieres comparar: \n");
 				printf ("1 - pH \n");
@@ -416,6 +315,7 @@ int main () {
 			
 				//Comparar pH
 				case 1: 
+					printf("\n-----COMPARAR PH-----\n");
 					do {
 						printf ("\nComparacion de datos de pH \n\n");
 						printf ("Elija una opcion: \n");
@@ -569,7 +469,7 @@ int main () {
 				
 				//Comparar conductividad
 				case 2:
-					printf ("\nComparacion de datos de conductividad \n");
+					printf("\n-----COMPARAR CONDUCTIVIDAD-----\n");
 					do {
 						printf ("Elija una opcion: \n");
 						printf ("1 - Maximo \n");
@@ -722,18 +622,19 @@ int main () {
 				
 				//Comparar turbidez
 				case 3:
-					printf ("\nComparacion de datos de turbidez \n");
+					printf("\n-----COMPARAR TURBIDEZ-----\n");
 				break;
 				
 				//Comparar coliformes
 				case 4:
-					printf ("\nComparacion de datos de coliformes \n");
+					printf("\n-----COMPARAR COLIFORMES-----\n");
 				break;
 			}
 		break;
 		
 		//Ordenar datos
 		case 3:
+			printf("\n-----ORDENAR DATOS-----\n");
 			do {
 				printf ("\nSeleccione una opcion: \n");
 				printf ("1 - Lavapies \n");
@@ -1051,6 +952,7 @@ int main () {
 		
 		//Estadisticas
 		case 4:
+			printf("\n-----ESTADISTICAS-----\n");
 			do{
 				printf("\nSeleccione una opcion: \n\n");
 				printf("1 - Potabilidad \n");
@@ -1316,7 +1218,7 @@ int main () {
 
 //FUNCIONES
 
-	//MAXIMO
+	//MAXIMO (FALTA TODO MENOS PH)
 		
 		//Carabanchel
 			float fmaximoCar (struct TDatosFuente FuenteCar[]) {
@@ -1357,7 +1259,7 @@ int main () {
 			return mayor; 
 			}
 	
-	//MINIMO
+	//MINIMO (FALTA TODO MENOS PH)
 	
 		//Carabanchel
 			float fminimoCar (struct TDatosFuente FuenteCar[]) {
@@ -1734,7 +1636,7 @@ int main () {
 		return aux;
 		}
 		
-    //RECORRIDO
+    //RECORRIDO (FALTA TODO MENOS PH)
 	
 		//Carabanchel
 			float frecorridoCar (struct TDatosFuente FuenteCar[]) {
@@ -1809,7 +1711,7 @@ int main () {
 			return recorr;
 			}	
 
-    //MODA
+    //MODA (FALTA TODO MENOS PH)
 
        	//Carabanchel 
         float fmodaCar(struct TDatosFuente FuenteCar[]) {
@@ -2266,7 +2168,7 @@ int main () {
 				}
 			}
 
-	//DIFERENTE BARRIO
+	//DIFERENTE BARRIO (FALTA TODO MENOS PH)
 		//pH
 			//lAVAPIES-CARABANCHEL
 			void fcompararpHLavCar(struct TDatosFuente FuenteLav[], int NumFuentesLav, struct TDatosFuente FuenteCar[], int NumFuentesCar) {
