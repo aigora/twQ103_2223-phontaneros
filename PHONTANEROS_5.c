@@ -576,7 +576,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavpH(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%.2f \n",FuenteLav[i].pH);
 									}
@@ -584,7 +584,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavpH(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%.2f \n",FuenteLav[i].pH);
 									}
@@ -605,7 +605,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavConductividad(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].conductividad);
 									}
@@ -613,7 +613,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavConductividad(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d\n",FuenteLav[i].conductividad);
 									}
@@ -634,7 +634,7 @@ int main () {
 							
 								case 1:
 									menoramayor=fmenoramayorLavTurbidez(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].turbidez);
 									}
@@ -642,7 +642,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorLavTurbidez(FuenteLav);
-									for(i=0;i<25;i++) {
+									for(i=0;i<NumFuentesLav;i++) {
 										printf("%s: ", FuenteLav[i].fuente);
 										printf("%d \n",FuenteLav[i].turbidez);
 									}
@@ -677,7 +677,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarpH(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%.2f \n",FuenteCar[i].pH);
 									}
@@ -685,7 +685,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarpH(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%.2f \n",FuenteCar[i].pH);
 									}
@@ -706,7 +706,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarConductividad(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].conductividad);
 									}
@@ -714,7 +714,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarConductividad(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].conductividad);
 									}
@@ -735,7 +735,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorCarTurbidez(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].turbidez);
 									}
@@ -743,7 +743,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorCarTurbidez(FuenteCar);
-									for(i=0;i<30;i++) {
+									for(i=0;i<NumFuentesCar;i++) {
 										printf("%s: ", FuenteCar[i].fuente);
 										printf("%d \n",FuenteCar[i].turbidez);
 									}
@@ -778,7 +778,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallpH(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%.2f \n",FuenteVall[i].pH);
 									}
@@ -786,7 +786,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallpH(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%.2f \n",FuenteVall[i].pH);
 									}
@@ -807,7 +807,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallConductividad(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].conductividad);
 									}
@@ -815,7 +815,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallConductividad(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].conductividad);
 									}
@@ -836,7 +836,7 @@ int main () {
 								
 								case 1:
 									menoramayor=fmenoramayorVallTurbidez(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].turbidez);
 									}
@@ -844,7 +844,7 @@ int main () {
 								
 								case 2:
 									mayoramenor=fmayoramenorVallTurbidez(FuenteVall);
-									for(i=0;i<27;i++) {
+									for(i=0;i<NumFuentesVall;i++) {
 										printf("%s: ", FuenteVall[i].fuente);
 										printf("%d \n",FuenteVall[i].turbidez);
 									}
