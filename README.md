@@ -1,4 +1,4 @@
-# LOS PAYOS ALONSO MAS PAYO QUE NINGUNO
+#
 
 [Descripción breve del proyecto a realizar (2-3 frases).]
 
